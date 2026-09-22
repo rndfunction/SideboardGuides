@@ -5,7 +5,10 @@ import {
   clearSaved,
   exportAsText,
   copyToClipboard,
-  PRESET_MATCHUPS
+  PRESET_MATCHUPS,
+  FORMAT_LIST,
+  getLastFormat,
+  setLastFormat
 } from "../persistence.js";
 
 const GuideToolbar = {
@@ -15,17 +18,22 @@ const GuideToolbar = {
     matchups: { type: Array, default: () => [] },
     plan: { type: Object, default: () => ({}) }
   },
-  emits: ["load-state", "add-matchups"],
+  emits: ["load-state", "add-matchups", "open-print"],
   data() {
     return {
       lastMessage: "",
       lastMessageClass: "ok",
-      presetFormat: "Modern"
+      presetFormat: getLastFormat()
     };
+  },
+  watch: {
+    presetFormat(val) {
+      setLastFormat(val);
+    }
   },
   computed: {
     presetFormats() {
-      return Object.keys(PRESET_MATCHUPS);
+      return FORMAT_LIST;
     },
     presetList() {
       return PRESET_MATCHUPS[this.presetFormat] || [];
@@ -105,6 +113,7 @@ const GuideToolbar = {
         <button type="button" class="usa-button usa-button--outline" @click="onClear">Clear saved</button>
         <button type="button" class="usa-button usa-button--outline" @click="onCopy">Copy as text</button>
         <button type="button" class="usa-button usa-button--outline" @click="onDownload">Download .txt</button>
+        <button type="button" class="usa-button" @click="$emit('open-print')">Print cards</button>
         <span v-if="lastMessage" class="toolbar-msg" :class="lastMessageClass">{{ lastMessage }}</span>
       </div>
 

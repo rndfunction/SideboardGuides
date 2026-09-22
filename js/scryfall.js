@@ -1,13 +1,25 @@
-// Scryfall API client with batching + localStorage caching.
-// Docs: https://scryfall.com/docs/api
-// We use POST /cards/collection (max 75 identifiers per call).
-// Cache entries stored under "mtg-deck-guide:cards:<lowercased name>".
+// Card lookup: Scryfall first, local DB fallback.
+//
+// FORGE's preview sandbox enforces a CSP that blocks api.scryfall.com, so
+// in that environment every network call fails and we fall back to
+// /js/carddb.js for the cards we know about. When the app runs on a
+// normal origin, Scryfall returns full metadata (images, oracle text, etc.)
+// and the local DB is only consulted for cards Scryfall doesn't know.
+//
+// Flow for lookupCards(names):
+//   1. Check localStorage cache.
+//   2. Try Scryfall in batches of 75 (with throttling).
+//   3. For any name Scryfall didn't return (or if the whole fetch failed),
+//      consult the local DB.
+//   4. Cache whatever we found.
+
+import { findLocal } from "./carddb.js";
 
 const API_BASE = "https://api.scryfall.com";
 const CACHE_PREFIX = "mtg-deck-guide:card:";
 const CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7; // 7 days
 const BATCH_SIZE = 75;
-const THROTTLE_MS = 100; // politeness delay between batch requests
+const THROTTLE_MS = 100;
 
 function cacheKey(name) {
   return CACHE_PREFIX + name.trim().toLowerCase();
@@ -40,9 +52,6 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/**
- * Normalize a Scryfall card object into just what the UI needs.
- */
 function normalizeCard(card) {
   if (!card) return null;
   return {
@@ -60,14 +69,11 @@ function normalizeCard(card) {
     image_normal: (card.image_uris && card.image_uris.normal) || "",
     image_small: (card.image_uris && card.image_uris.small) || "",
     scryfall_uri: card.scryfall_uri || "",
-    layout: card.layout || "normal"
+    layout: card.layout || "normal",
+    source: "scryfall"
   };
 }
 
-/**
- * Fetch a single batch from Scryfall's collection endpoint.
- * Returns { data: [card], not_found: [identifier] }
- */
 async function fetchBatch(names) {
   const body = { identifiers: names.map((n) => ({ name: n })) };
   const res = await fetch(API_BASE + "/cards/collection", {
@@ -82,15 +88,15 @@ async function fetchBatch(names) {
 }
 
 /**
- * Look up many card names. Returns a Map<name, normalizedCard|null>.
- * Uses cache first, batches the misses, throttles between batches.
- * onProgress({ phase, done, total, cached }) is optional.
+ * Look up many card names. Returns Map<name, normalizedCard|null>.
+ * Scryfall first, local DB fallback per-card.
  */
 export async function lookupCards(names, onProgress) {
   const result = new Map();
   const misses = [];
   let cachedCount = 0;
 
+  // 1. Cache pass.
   for (const name of names) {
     const hit = readCache(name);
     if (hit) {
@@ -105,7 +111,7 @@ export async function lookupCards(names, onProgress) {
   let done = cachedCount;
   if (onProgress) onProgress({ phase: "cache", done, total });
 
-  // Chunk the misses.
+  // 2. Batch Scryfall fetches, tolerating failure of any batch.
   const batches = [];
   for (let i = 0; i < misses.length; i += BATCH_SIZE) {
     batches.push(misses.slice(i, i + BATCH_SIZE));
@@ -115,34 +121,51 @@ export async function lookupCards(names, onProgress) {
     const batch = batches[bi];
     if (bi > 0) await sleep(THROTTLE_MS);
 
-    let payload;
+    let payload = null;
     try {
       payload = await fetchBatch(batch);
     } catch (err) {
-      // Mark the whole batch as failed (null), keep going.
-      for (const name of batch) result.set(name, null);
-      done += batch.length;
-      if (onProgress) onProgress({ phase: "fetch", done, total, error: String(err) });
-      continue;
+      // Mark batch as failed; local fallback will cover.
+      payload = null;
+      if (onProgress) onProgress({ phase: "fetch-error", done, total, error: String(err) });
     }
 
-    const foundByName = new Map();
-    for (const raw of payload.data || []) {
-      const card = normalizeCard(raw);
-      if (card) foundByName.set(card.name.toLowerCase(), card);
-      // Also cache under the requested name if Scryfall returned a canonical name.
-    }
-
-    for (const name of batch) {
-      const card = foundByName.get(name.trim().toLowerCase()) || null;
-      result.set(name, card);
-      if (card) writeCache(name, card);
+    if (payload && Array.isArray(payload.data)) {
+      const foundByName = new Map();
+      for (const raw of payload.data) {
+        const card = normalizeCard(raw);
+        if (card) foundByName.set(card.name.toLowerCase(), card);
+      }
+      for (const name of batch) {
+        const card = foundByName.get(name.trim().toLowerCase()) || null;
+        if (card) {
+          result.set(name, card);
+          writeCache(name, card);
+        }
+        // If not found here, leave it unresolved so the local DB pass picks it up.
+      }
     }
 
     done += batch.length;
     if (onProgress) onProgress({ phase: "fetch", done, total, batch: bi + 1, batches: batches.length });
   }
 
+  // 3. Local DB fallback for anything still unresolved.
+  let localHits = 0;
+  for (const name of names) {
+    if (result.has(name)) continue;
+    const card = findLocal(name);
+    if (card) {
+      result.set(name, card);
+      localHits++;
+      // Do NOT write local hits to the persistent cache; if network comes
+      // back later we want to re-query Scryfall for richer data.
+    } else {
+      result.set(name, null);
+    }
+  }
+
+  if (onProgress) onProgress({ phase: "local", done: total, total, localHits });
   return result;
 }
 

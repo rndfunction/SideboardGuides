@@ -55,6 +55,27 @@ const TitleCard = {
     sideOk() { return this.sideCount === 15 || this.sideCount === 0; }
   },
   methods: {
+    normalizeName() {
+      // Fire a lightweight titlecase on blur via the store's setter.
+      const v = (this.localName || "").trim();
+      if (!v) return;
+      // Re-emit so the parent applies titlecase. Vue's v-model on blur has
+      // already written the raw value; we just re-emit a cased version.
+      const cased = this.simpleTitleCase(v);
+      if (cased !== v) this.$emit("update:deckName", cased);
+    },
+    simpleTitleCase(input) {
+      return String(input)
+        .trim()
+        .split(/\s+/)
+        .map((w) => {
+          if (/^\d/.test(w)) return w;
+          // Keep all-caps 2-4 char tokens.
+          if (w.length <= 4 && w === w.toUpperCase() && /^[A-Z]+$/.test(w)) return w;
+          return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+        })
+        .join(" ");
+    },
     async onExportPng() {
       this.exporting = true;
       this.exportError = "";
@@ -77,6 +98,7 @@ const TitleCard = {
         class="deck-name-input"
         style="background:transparent;border:none;color:inherit;font-size:2.25rem;font-weight:700;width:100%;padding:0;margin:0;"
         v-model="localName"
+        @blur="normalizeName"
       />
 
       <div class="deck-meta">

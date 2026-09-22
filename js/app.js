@@ -2,16 +2,20 @@
 // Vue is loaded as a global (window.Vue) via index.html because FORGE's preview
 // VFS rewrites bare-URL ESM imports relative to the importing file (breaking them).
 import DeckInput from "./components/DeckInput.js";
-import TitleCard from "./components/TitleCard.js";
-import SideboardGuide from "./components/SideboardGuide.js";
 import GuideToolbar from "./components/GuideToolbar.js";
+import DeckGrid from "./components/DeckGrid.js";
+import PrintView from "./components/PrintView.js";
 import {
   store,
   loadDecklist,
   addMatchup,
   removeMatchup,
-  toggleCard
+  renameMatchup,
+  setDeckName,
+  cycleCard,
+  setCardPlan
 } from "./store.js";
+import { getLastFormat } from "./persistence.js";
 
 const Vue = window.Vue;
 if (!Vue || typeof Vue.createApp !== "function") {
@@ -20,7 +24,11 @@ if (!Vue || typeof Vue.createApp !== "function") {
 
 const app = Vue.createApp({
   data() {
-    return { store };
+    return {
+      store,
+      showPrint: false,
+      selectedFormat: getLastFormat()
+    };
   },
   computed: {
     parsed() { return store.parsed; },
@@ -44,11 +52,15 @@ const app = Vue.createApp({
       store.matchups = [];
       store.plan = {};
       store.deckName = "";
+      store.deckNameWasEdited = false;
+      this.showPrint = false;
     },
     addMatchup(name) { addMatchup(name); },
     addMatchups(names) { for (const n of names) addMatchup(n); },
     removeMatchup(name) { removeMatchup(name); },
-    toggleCard(cardName, matchup) { toggleCard(cardName, matchup); },
+    onRenameMatchup(oldName, newName) { renameMatchup(oldName, newName); },
+    onToggleCard(cardName, matchup, section) { cycleCard(cardName, matchup, section); },
+    onSetCardPlan(cardName, matchup, dir, count) { setCardPlan(cardName, matchup, dir, count); },
     async onLoadState(saved) {
       if (saved.rawText) {
         await loadDecklist(saved.rawText);
@@ -64,13 +76,23 @@ const app = Vue.createApp({
       }
     },
     onDeckNameChange(name) {
-      store.deckName = name;
+      setDeckName(name);
+    },
+    onOpenPrint() {
+      this.showPrint = true;
+      this.$nextTick(() => {
+        const el = document.querySelector('.print-view');
+        if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    },
+    onClosePrint() {
+      this.showPrint = false;
     }
   }
 });
 
 app.component("deck-input", DeckInput);
-app.component("title-card", TitleCard);
-app.component("sideboard-guide", SideboardGuide);
 app.component("guide-toolbar", GuideToolbar);
+app.component("deck-grid", DeckGrid);
+app.component("print-view", PrintView);
 app.mount("#app");
