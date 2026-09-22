@@ -1,0 +1,375 @@
+/* MTG Deck Guide Builder — custom styles layered on USWDS */
+
+:root {
+  --mtg-white: #f7f7f2;
+  --mtg-blue: #4a90d9;
+  --mtg-black: #2a2a2a;
+  --mtg-red: #d9462b;
+  --mtg-green: #4a8a4a;
+  --mtg-gold: #c9a94a;
+  --mtg-colorless: #9a9a9a;
+}
+
+body {
+  background: #f0f0eb;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+}
+
+.site-header {
+  padding: 1.5rem 0 1rem;
+  border-bottom: 4px solid var(--mtg-gold);
+  margin-bottom: 1.5rem;
+}
+
+.site-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+}
+
+.usa-intro {
+  margin: 0;
+  color: #555;
+}
+
+/* Deck input */
+.deck-input textarea {
+  font-family: "Courier New", monospace;
+  font-size: 0.85rem;
+  min-height: 18rem;
+  width: 100%;
+}
+
+.deck-input-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  align-items: center;
+}
+
+.parse-status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.parse-status.error { color: var(--mtg-red); }
+.parse-status.ok { color: var(--mtg-green); }
+
+/* Title card */
+.title-card {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #f7f7f2;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.title-card h2 {
+  margin: 0;
+  font-size: 2.25rem;
+  letter-spacing: 0.02em;
+  color: #f7f7f2;
+}
+
+.title-card .deck-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  color: #cfd3dc;
+}
+
+.title-card .color-pips {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.color-pip {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.7);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.pip-W { background: var(--mtg-white); color: #333; text-shadow: none; }
+.pip-U { background: var(--mtg-blue); }
+.pip-B { background: var(--mtg-black); }
+.pip-R { background: var(--mtg-red); }
+.pip-G { background: var(--mtg-green); }
+
+.mana-curve {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-top: 1.25rem;
+  height: 90px;
+}
+
+.curve-bar {
+  flex: 1;
+  min-width: 18px;
+  background: var(--mtg-gold);
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: #1a1a2e;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding-top: 2px;
+  transition: height 0.3s ease;
+}
+
+.curve-label {
+  font-size: 0.7rem;
+  color: #cfd3dc;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+.curve-column {
+  flex: 1;
+  min-width: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Sideboard guide */
+.sideboard-guide {
+  margin-top: 2rem;
+}
+
+.sideboard-guide h3 {
+  margin-bottom: 0.5rem;
+}
+
+.matchup-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.matchup-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.matchup-input input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.guide-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+table.guide-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+table.guide-table th,
+table.guide-table td {
+  border: 1px solid #e0e0e0;
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+table.guide-table thead th {
+  background: #2a2a3e;
+  color: #f7f7f2;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+table.guide-table th.card-col {
+  position: sticky;
+  left: 0;
+  background: #f7f7f2;
+  color: #1a1a2e;
+  z-index: 3;
+  min-width: 200px;
+}
+
+table.guide-table thead th.card-col {
+  z-index: 4;
+  background: #2a2a3e;
+  color: #f7f7f2;
+}
+
+table.guide-table tr.section-row td {
+  background: #e8e8e0;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #333;
+}
+
+.toggle-cell {
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  width: 60px;
+}
+
+.toggle-cell:hover { background: #f0f0e0; }
+.toggle-cell.state-in { background: #d4edda; color: #155724; font-weight: 700; }
+.toggle-cell.state-out { background: #f8d7da; color: #721c24; font-weight: 700; }
+
+.matchup-remove {
+  background: none;
+  border: none;
+  color: #a00;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0 0.25rem;
+}
+
+.mana-cost {
+  display: inline-flex;
+  gap: 2px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+.mana-symbol {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ccc;
+  color: #1a1a2e;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 14px;
+}
+
+.ms-W { background: #f7f7f2; border: 1px solid #999; }
+.ms-U { background: #4a90d9; color: #fff; }
+.ms-B { background: #2a2a2a; color: #fff; }
+.ms-R { background: #d9462b; color: #fff; }
+.ms-G { background: #4a8a4a; color: #fff; }
+.ms-C { background: #9a9a9a; color: #fff; }
+
+.card-count-badge {
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-right: 0.35rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #777;
+}
+
+/* Guide toolbar */
+.guide-toolbar {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.toolbar-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.toolbar-row:last-child { margin-bottom: 0; }
+
+.toolbar-row .usa-button {
+  margin-right: 0;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.toolbar-msg {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.toolbar-msg.ok { color: #155724; }
+.toolbar-msg.error { color: #721c24; }
+
+.preset-label {
+  font-size: 0.85rem;
+  color: #555;
+  margin-left: 0.5rem;
+}
+
+.preset-chip {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem !important;
+  border-radius: 999px;
+  background: #eef2f7;
+  color: #1a1a2e;
+  border: 1px solid #ccd4e0;
+  text-decoration: none;
+}
+
+.preset-chip:hover {
+  background: #dde6f1;
+  text-decoration: none;
+}
+
+/* Title card: count validation + export button */
+.count-good { color: #a3e6a3; }
+.count-bad  { color: #ff9d9d; font-weight: 700; }
+
+.title-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.title-export-btn {
+  border-color: #cfd3dc !important;
+  color: #f7f7f2 !important;
+  background: transparent !important;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+}
+
+.title-export-btn:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+
+.title-export-err {
+  color: #ff9d9d;
+  font-size: 0.85rem;
+}
