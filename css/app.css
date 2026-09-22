@@ -615,6 +615,11 @@ table.guide-table tr.section-row td {
   font-weight: 700;
   line-height: 1.05;
   font-size: 18pt;
+  /* Clip long titles rather than showing "..." on the physical card.
+     Every character of the name matters more than the truncation hint. */
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
 }
 
 .pc-sub {

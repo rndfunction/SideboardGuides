@@ -34,14 +34,16 @@ const PrintView = {
   },
   emits: ["close"],
   data() {
+    // Only the decorative prefs (color + font) persist across sessions.
+    // Toggles always start true so the preview shows everything by default;
+    // the user hides things from there if they want.
     const prefs = loadPrefs() || {};
     return {
       includeDecklist: true,
       includeSideboard: true,
-      includeTitleCard: prefs.includeTitleCard !== false,
+      includeTitleCard: true,
       titleColor: prefs.titleColor || null, // resolved to default on mount
-      titleFontKey: prefs.titleFontKey || defaultFontKey(),
-      _prefsLoaded: false
+      titleFontKey: prefs.titleFontKey || defaultFontKey()
     };
   },
   mounted() {
@@ -49,12 +51,10 @@ const PrintView = {
     if (!this.titleColor) {
       this.titleColor = defaultColorForDeck(this.deck);
     }
-    this._prefsLoaded = true;
   },
   watch: {
     titleColor() { this.persistPrefs(); },
-    titleFontKey() { this.persistPrefs(); },
-    includeTitleCard() { this.persistPrefs(); }
+    titleFontKey() { this.persistPrefs(); }
   },
   computed: {
     colors() {
@@ -87,9 +87,11 @@ const PrintView = {
       return pages;
     },
     decklistRows() {
+      if (!this.deck) return [];
       return this.inventoryRows(this.deck.mainboard || []);
     },
     sideboardRows() {
+      if (!this.deck) return [];
       return this.inventoryRows(this.deck.sideboard || []);
     },
     decklistTotal() {
@@ -147,9 +149,7 @@ const PrintView = {
   },
   methods: {
     persistPrefs() {
-      if (!this._prefsLoaded) return;
       savePrefs({
-        includeTitleCard: this.includeTitleCard,
         titleColor: this.titleColor,
         titleFontKey: this.titleFontKey
       });
@@ -193,6 +193,7 @@ const PrintView = {
       return rows;
     },
     buildRows(pageMatchups) {
+      if (!this.deck) return [];
       const mainRows = this.rowsFor(this.deck.mainboard || [], pageMatchups, false);
       const sideRows = this.rowsFor(this.deck.sideboard || [], pageMatchups, true);
       if (sideRows.length) sideRows[0].firstSide = true;

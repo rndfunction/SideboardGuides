@@ -34,10 +34,23 @@
         :raw-text="store.rawText"
         :matchups="matchups"
         :plan="plan"
+        :print-open="showPrint"
         @load-state="onLoadState"
         @add-matchups="onAddMatchups"
-        @open-print="onOpenPrint"
+        @toggle-print="onTogglePrint"
       ></guide-toolbar>
+
+      <!-- Live print preview sits above the grid so it reads as the
+           artifact being designed, with the grid below as the tool. -->
+      <print-view
+        v-if="enriched && showPrint"
+        :deck="enriched"
+        :deck-name="deckName"
+        :format="selectedFormat"
+        :matchups="matchups"
+        :plan="plan"
+        @close="onClosePrint"
+      ></print-view>
 
       <deck-grid
         v-if="enriched"
@@ -53,17 +66,6 @@
         @update:deck-name="onDeckNameChange"
       ></deck-grid>
 
-      <!-- On-screen print preview (only when user clicks Print cards) -->
-      <print-view
-        v-if="showPrint && matchups.length"
-        :deck="enriched"
-        :deck-name="deckName"
-        :format="selectedFormat"
-        :matchups="matchups"
-        :plan="plan"
-        @close="onClosePrint"
-      ></print-view>
-
       <footer class="usa-footer__primary-section" v-if="!parsed">
         <p>No data leaves your browser except card lookups to Scryfall.</p>
       </footer>
@@ -75,7 +77,7 @@
        ============================================================ -->
   <div class="print-root">
     <print-view
-      v-if="showPrint && matchups.length"
+      v-if="enriched && showPrint"
       :deck="enriched"
       :deck-name="deckName"
       :format="selectedFormat"

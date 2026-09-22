@@ -26,7 +26,7 @@ const app = Vue.createApp({
   data() {
     return {
       store,
-      showPrint: false,
+      showPrint: true,
       selectedFormat: getLastFormat()
     };
   },
@@ -77,6 +77,15 @@ const app = Vue.createApp({
     },
     onDeckNameChange(name) {
       setDeckName(name);
+    },
+    onTogglePrint() {
+      this.showPrint = !this.showPrint;
+      if (this.showPrint) {
+        this.$nextTick(() => {
+          const el = document.querySelector('.print-view');
+          if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     },
     onOpenPrint() {
       this.showPrint = true;

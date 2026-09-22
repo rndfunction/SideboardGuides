@@ -36,9 +36,12 @@ const PrintCard = {
       return entry.dir === "in" ? "pc-in" : "pc-out";
     },
     shortName(name) {
+      // Hard-cut long names rather than adding an ellipsis. Every character
+      // on a 3in card is precious, and readers don't need the "..." to
+      // recognize a truncated card name.
       if (!name) return "";
-      if (name.length <= 24) return name;
-      return name.slice(0, 22) + "\u2026";
+      if (name.length <= 26) return name;
+      return name.slice(0, 26);
     },
     rowKey(row) {
       return row.name;

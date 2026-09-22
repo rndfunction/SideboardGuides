@@ -44,9 +44,12 @@ const PrintListCard = {
   },
   methods: {
     shortName(name) {
+      // Hard-cut long names rather than adding an ellipsis. Every character
+      // on a 3in card is precious, and readers don't need the "..." to
+      // recognize a truncated card name.
       if (!name) return "";
-      if (name.length <= 26) return name;
-      return name.slice(0, 24) + "\u2026";
+      if (name.length <= 28) return name;
+      return name.slice(0, 28);
     }
   },
   template: `

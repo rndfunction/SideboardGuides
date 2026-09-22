@@ -1,10 +1,8 @@
-// Toolbar above the sideboard guide: save/load/export + preset matchups.
+// Toolbar: save/load/forget + print-preview toggle + preset matchups.
 import {
   saveGuide,
   loadGuide,
   clearSaved,
-  exportAsText,
-  copyToClipboard,
   PRESET_MATCHUPS,
   FORMAT_LIST,
   getLastFormat,
@@ -16,9 +14,10 @@ const GuideToolbar = {
     deckName: { type: String, default: "" },
     rawText: { type: String, default: "" },
     matchups: { type: Array, default: () => [] },
-    plan: { type: Object, default: () => ({}) }
+    plan: { type: Object, default: () => ({}) },
+    printOpen: { type: Boolean, default: false }
   },
-  emits: ["load-state", "add-matchups", "open-print"],
+  emits: ["load-state", "add-matchups", "toggle-print"],
   data() {
     return {
       lastMessage: "",
@@ -67,35 +66,7 @@ const GuideToolbar = {
     },
     onClear() {
       clearSaved();
-      this.flash("Saved guide cleared.", "ok");
-    },
-    async onCopy() {
-      const text = exportAsText({
-        deckName: this.deckName,
-        matchups: this.matchups,
-        plan: this.plan
-      });
-      const ok = await copyToClipboard(text);
-      if (ok) this.flash("Guide copied to clipboard.", "ok");
-      else this.flash("Copy failed.", "error");
-    },
-    onDownload() {
-      const text = exportAsText({
-        deckName: this.deckName,
-        matchups: this.matchups,
-        plan: this.plan
-      });
-      const blob = new Blob([text], { type: "text/plain" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      const safe = (this.deckName || "deck").replace(/[^a-z0-9]+/gi, "-").toLowerCase();
-      a.download = safe + "-sideboard-guide.txt";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      this.flash("Downloaded.", "ok");
+      this.flash("Saved guide forgotten.", "ok");
     },
     onAddPreset(matchup) {
       this.$emit("add-matchups", [matchup]);
@@ -103,6 +74,9 @@ const GuideToolbar = {
     onAddAllPresets() {
       if (!this.newPresets.length) return;
       this.$emit("add-matchups", this.newPresets.slice());
+    },
+    onTogglePrint() {
+      this.$emit("toggle-print");
     }
   },
   template: `
@@ -110,10 +84,10 @@ const GuideToolbar = {
       <div class="toolbar-row">
         <button type="button" class="usa-button usa-button--outline" @click="onSave">Save</button>
         <button type="button" class="usa-button usa-button--outline" @click="onLoad">Load</button>
-        <button type="button" class="usa-button usa-button--outline" @click="onClear">Clear saved</button>
-        <button type="button" class="usa-button usa-button--outline" @click="onCopy">Copy as text</button>
-        <button type="button" class="usa-button usa-button--outline" @click="onDownload">Download .txt</button>
-        <button type="button" class="usa-button" @click="$emit('open-print')">Print cards</button>
+        <button type="button" class="usa-button usa-button--outline" @click="onClear">Forget</button>
+        <button type="button" class="usa-button" @click="onTogglePrint">
+          {{ printOpen ? "Hide print preview" : "Show print preview" }}
+        </button>
         <span v-if="lastMessage" class="toolbar-msg" :class="lastMessageClass">{{ lastMessage }}</span>
       </div>
 
