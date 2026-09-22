@@ -56,7 +56,7 @@ const app = Vue.createApp({
       this.showPrint = false;
     },
     addMatchup(name) { addMatchup(name); },
-    addMatchups(names) { for (const n of names) addMatchup(n); },
+    onAddMatchups(names) { for (const n of names) addMatchup(n); },
     removeMatchup(name) { removeMatchup(name); },
     onRenameMatchup(oldName, newName) { renameMatchup(oldName, newName); },
     onToggleCard(cardName, matchup, section) { cycleCard(cardName, matchup, section); },

@@ -279,6 +279,11 @@ const DeckGrid = {
       this.$emit("set-card-plan", this.popover.cardName, this.popover.matchup, dir, count);
       this.closePopover();
     },
+    /** Whether the popover's target card is in the maindeck. */
+    popoverIsMain() {
+      if (!this.popover) return true;
+      return this.isMaindeck(this.popover.cardName);
+    },
     onPopoverClear() {
       if (!this.popover) return;
       this.$emit("set-card-plan", this.popover.cardName, this.popover.matchup, null, 0);
@@ -510,7 +515,7 @@ const DeckGrid = {
         @click.stop
       >
         <h5>{{ popover.cardName }} &middot; {{ popover.matchup }}</h5>
-        <div class="plan-popover-row">
+        <div v-if="!popoverIsMain" class="plan-popover-row">
           <span class="plan-popover-label">IN</span>
           <button
             v-for="n in copiesFor(popover.cardName)"
@@ -521,7 +526,7 @@ const DeckGrid = {
             @click="onPopoverPick('in', n)"
           >{{ n }}</button>
         </div>
-        <div class="plan-popover-row">
+        <div v-if="popoverIsMain" class="plan-popover-row">
           <span class="plan-popover-label">OUT</span>
           <button
             v-for="n in copiesFor(popover.cardName)"

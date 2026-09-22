@@ -234,13 +234,14 @@ export function isMaindeckCard(cardName) {
 }
 
 /**
- * Cycle a cell. Direction depends on which half of the deck the card is in:
- *   Maindeck card:   null -> OUT(all) -> IN(all) -> null
- *   Sideboard card:  null -> IN(all)  -> OUT(all) -> null
+ * Cycle a cell. Direction is fixed by which half of the deck the card
+ * belongs to:
+ *   Maindeck card:   null -> OUT(all) -> null
+ *   Sideboard card:  null -> IN(all)  -> null
  *
- * Rationale: maindeck cards are usually boarded OUT against bad matchups;
- * sideboard cards are usually boarded IN. Cycling into the more likely
- * direction first matches how pilots actually think.
+ * Maindeck cards are always boarded OUT (never IN), and sideboard cards are
+ * always boarded IN (never OUT). The only variable is how many copies, which
+ * the user sets via the popover (right-click / pencil chip).
  *
  * `section` is optional ("main" | "side"). If omitted, we look it up.
  */
@@ -253,13 +254,12 @@ export function cycleCard(cardName, matchupName, section) {
               : section === "side" ? false
               : isMaindeckCard(cardName);
 
-  const firstDir = isMain ? "out" : "in";
-  const secondDir = isMain ? "in" : "out";
+  const dir = isMain ? "out" : "in";
 
   let next = null;
-  if (cur === null) next = { dir: firstDir, count: copies };
-  else if (cur.dir === firstDir) next = { dir: secondDir, count: copies };
-  else next = null;
+  if (cur === null) next = { dir, count: copies };
+  else if (cur.dir === dir) next = null; // second click clears
+  else next = { dir, count: copies }; // wrong dir stored? coerce to correct.
 
   if (next === null) delete store.plan[cardName][matchupName];
   else store.plan[cardName][matchupName] = next;
@@ -268,6 +268,10 @@ export function cycleCard(cardName, matchupName, section) {
 /**
  * Set an explicit plan for a cell. Pass dir=null to clear.
  * count is clamped to 1..copies.
+ *
+ * The direction is coerced to the correct one for the card's section:
+ * maindeck cards can only be OUT, sideboard cards can only be IN. This
+ * keeps the data model honest even if a caller passes the wrong dir.
  */
 export function setCardPlan(cardName, matchupName, dir, count) {
   if (!store.plan[cardName]) store.plan[cardName] = {};
@@ -275,9 +279,11 @@ export function setCardPlan(cardName, matchupName, dir, count) {
     delete store.plan[cardName][matchupName];
     return;
   }
+  const isMain = isMaindeckCard(cardName);
+  const correctDir = isMain ? "out" : "in";
   const max = copiesFor(cardName) || 1;
   const c = Math.max(1, Math.min(max, count || max));
-  store.plan[cardName][matchupName] = { dir, count: c };
+  store.plan[cardName][matchupName] = { dir: correctDir, count: c };
 }
 
 /**
