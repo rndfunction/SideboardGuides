@@ -10,9 +10,6 @@
 </head>
 <body>
 <div id="app">
-  <!-- ============================================================
-       On-screen application shell. Hidden entirely when printing.
-       ============================================================ -->
   <div class="app-shell">
     <main class="grid-container">
       <header class="site-header">
@@ -20,51 +17,76 @@
         <p class="usa-intro">Paste a decklist. Build a sideboard guide. Print 3x4in cards for the deckbox.</p>
       </header>
 
-      <deck-input
-        :parsed="parsed"
-        :loading="loading"
-        :error="error"
-        @parse="onParse"
-        @reset="onReset"
-      ></deck-input>
+      <div class="app-two-col">
+        <!-- ============================================================
+             Left column: the workspace. Input, buttons, and the grid
+             all stack here, top to bottom.
+             ============================================================ -->
+        <section class="workspace">
+          <deck-input
+            :parsed="parsed"
+            :loading="loading"
+            :error="error"
+            @parse="onParse"
+            @reset="onReset"
+          ></deck-input>
 
-      <guide-toolbar
-        v-if="enriched"
-        :deck-name="deckName"
-        :raw-text="store.rawText"
-        :matchups="matchups"
-        :plan="plan"
-        :print-open="showPrint"
-        @load-state="onLoadState"
-        @add-matchups="onAddMatchups"
-        @toggle-print="onTogglePrint"
-      ></guide-toolbar>
+          <guide-toolbar
+            v-if="enriched"
+            :deck-name="deckName"
+            :raw-text="store.rawText"
+            :matchups="matchups"
+            :plan="plan"
+            :print-open="showPrint"
+            @load-state="onLoadState"
+            @add-matchups="onAddMatchups"
+            @toggle-print="onTogglePrint"
+          ></guide-toolbar>
 
-      <!-- Live print preview sits above the grid so it reads as the
-           artifact being designed, with the grid below as the tool. -->
-      <print-view
-        v-if="enriched && showPrint"
-        :deck="enriched"
-        :deck-name="deckName"
-        :format="selectedFormat"
-        :matchups="matchups"
-        :plan="plan"
-        @close="onClosePrint"
-      ></print-view>
+          <deck-grid
+            v-if="enriched"
+            :deck="enriched"
+            :matchups="matchups"
+            :plan="plan"
+            :deck-name="deckName"
+            @add-matchup="addMatchup"
+            @rename-matchup="onRenameMatchup"
+            @remove-matchup="removeMatchup"
+            @toggle-card="onToggleCard"
+            @set-card-plan="onSetCardPlan"
+            @update:deck-name="onDeckNameChange"
+          ></deck-grid>
+        </section>
 
-      <deck-grid
-        v-if="enriched"
-        :deck="enriched"
-        :matchups="matchups"
-        :plan="plan"
-        :deck-name="deckName"
-        @add-matchup="addMatchup"
-        @rename-matchup="onRenameMatchup"
-        @remove-matchup="removeMatchup"
-        @toggle-card="onToggleCard"
-        @set-card-plan="onSetCardPlan"
-        @update:deck-name="onDeckNameChange"
-      ></deck-grid>
+        <!-- ============================================================
+             Right column: card preview pane. Sample cards when empty,
+             live print preview when a deck is loaded.
+             ============================================================ -->
+        <aside class="preview-pane">
+          <div class="preview-pane-body">
+            <sample-cards v-if="!enriched"></sample-cards>
+
+            <print-view
+              v-if="enriched && showPrint"
+              :deck="enriched"
+              :deck-name="deckName"
+              :format="selectedFormat"
+              :matchups="matchups"
+              :plan="plan"
+              @close="onClosePrint"
+            ></print-view>
+
+            <div v-if="enriched && !showPrint" class="preview-pane-off">
+              <p>Preview hidden.</p>
+              <button
+                type="button"
+                class="usa-button"
+                @click="onTogglePrint"
+              >Show print preview</button>
+            </div>
+          </div>
+        </aside>
+      </div>
 
       <footer class="usa-footer__primary-section" v-if="!parsed">
         <p>No data leaves your browser except card lookups to Scryfall.</p>
@@ -72,9 +94,6 @@
     </main>
   </div>
 
-  <!-- ============================================================
-       Print-only root. Hidden on screen; sole visible block on print.
-       ============================================================ -->
   <div class="print-root">
     <print-view
       v-if="enriched && showPrint"

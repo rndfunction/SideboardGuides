@@ -2,6 +2,7 @@
 // Vue is loaded as a global (window.Vue) via index.html because FORGE's preview
 // VFS rewrites bare-URL ESM imports relative to the importing file (breaking them).
 import DeckInput from "./components/DeckInput.js";
+import SampleCards from "./components/SampleCards.js";
 import GuideToolbar from "./components/GuideToolbar.js";
 import DeckGrid from "./components/DeckGrid.js";
 import PrintView from "./components/PrintView.js";
@@ -101,6 +102,7 @@ const app = Vue.createApp({
 });
 
 app.component("deck-input", DeckInput);
+app.component("sample-cards", SampleCards);
 app.component("guide-toolbar", GuideToolbar);
 app.component("deck-grid", DeckGrid);
 app.component("print-view", PrintView);

@@ -203,10 +203,6 @@ const PrintTitleCard = {
         <div class="ptc-name" :style="nameStyle">{{ deckName }}</div>
         <div v-if="subtitle" class="ptc-subtitle" :style="subtitleStyle">{{ subtitle }}</div>
       </div>
-
-      <div class="ptc-bottom">
-        <span class="ptc-date" :style="subtitleStyle">{{ dateLabel }}</span>
-      </div>
     </div>
   `
 };
