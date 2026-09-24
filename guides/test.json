@@ -1,1 +1,99 @@
-
+{
+  "format": "mtg-sideboard-guide",
+  "version": 1,
+  "generator": "Sideboard Guide Builder",
+  "createdAt": "2026-09-23T23:44:07.366Z",
+  "deck": {
+    "name": "Mono-Green Elves",
+    "format": "Pauper",
+    "archetype": "",
+    "rawText": "4 Avenging Hunter\n4 Elvish Mystic\n9 Forest\n4 Fyndhorn Elves\n4 Generous Ent\n1 Gingerbread Cabin\n2 Land Grant\n4 Lead the Stampede\n4 Masked Vandal\n4 Nyxborn Hydra\n4 Priest of Titania\n4 Quirion Ranger\n3 Sagu Wildling\n4 Timberwatch Elf\n1 Wellwisher\n4 Winding Way\n\n3 Faerie Macabre\n3 Gnaw to the Bone\n4 Monstrous Emergence\n2 Spinewoods Paladin\n3 Vitu-Ghazi Inspector\n"
+  },
+  "matchups": [
+    "Mono-Red Burn",
+    "Cycle Storm",
+    "Affinity"
+  ],
+  "plan": {
+    "Avenging Hunter": {
+      "Mono-Red Burn": {
+        "dir": "out",
+        "count": 4
+      },
+      "Cycle Storm": {
+        "dir": "out",
+        "count": 1
+      },
+      "Affinity": {
+        "dir": "out",
+        "count": 3
+      }
+    },
+    "Elvish Mystic": {},
+    "Forest": {},
+    "Fyndhorn Elves": {},
+    "Generous Ent": {},
+    "Gingerbread Cabin": {},
+    "Land Grant": {},
+    "Lead the Stampede": {},
+    "Masked Vandal": {
+      "Mono-Red Burn": {
+        "dir": "out",
+        "count": 4
+      }
+    },
+    "Nyxborn Hydra": {},
+    "Priest of Titania": {},
+    "Quirion Ranger": {},
+    "Sagu Wildling": {
+      "Cycle Storm": {
+        "dir": "out",
+        "count": 1
+      }
+    },
+    "Timberwatch Elf": {},
+    "Wellwisher": {
+      "Cycle Storm": {
+        "dir": "out",
+        "count": 1
+      }
+    },
+    "Winding Way": {},
+    "Faerie Macabre": {
+      "Cycle Storm": {
+        "dir": "in",
+        "count": 3
+      }
+    },
+    "Gnaw to the Bone": {
+      "Mono-Red Burn": {
+        "dir": "in",
+        "count": 3
+      }
+    },
+    "Monstrous Emergence": {},
+    "Spinewoods Paladin": {
+      "Mono-Red Burn": {
+        "dir": "in",
+        "count": 2
+      }
+    },
+    "Vitu-Ghazi Inspector": {
+      "Mono-Red Burn": {
+        "dir": "in",
+        "count": 3
+      },
+      "Affinity": {
+        "dir": "in",
+        "count": 3
+      }
+    }
+  },
+  "titleCard": {
+    "color": null,
+    "fontKey": null,
+    "symbol": null,
+    "texture": null,
+    "intensity": null
+  }
+}
