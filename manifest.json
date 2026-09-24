@@ -1,23 +1,30 @@
 {
-"version": 1,
-"lastUpdated": "2026-09-24",
-"guides": [
-{
-"file": "mono-red-burn-modern.json",
-"deckName": "Mono-Red Burn",
-"format": "Modern",
-"archetype": "Mono-Red Burn",
-"author": "rndfunction",
-"createdAt": "2026-09-24"
-},
-{
-"file": "mono-green-elves-pauper.json",
-"deckName": "Mono-Green Elves",
-"format": "Pauper",
-"archetype": "Mono-Green Elves",
-"author": "rndfunction",
-"createdAt": "2026-09-24"
+  "version": 1,
+  "lastUpdated": "2026-09-24",
+  "guides": [
+    {
+      "file": "mono-red-burn-modern.json",
+      "deckName": "Mono-Red Burn",
+      "format": "Modern",
+      "archetype": "Mono-Red Burn",
+      "author": "rndfunction",
+      "createdAt": "2026-09-24"
+    },
+    {
+      "file": "mono-green-elves-pauper.json",
+      "deckName": "Mono-Green Elves",
+      "format": "Pauper",
+      "archetype": "Mono-Green Elves",
+      "author": "rndfunction",
+      "createdAt": "2026-09-24"
+    },
+    {
+      "file": "mono-green-elves-20260924-072740.json",
+      "deckName": "Mono-Green Elves",
+      "format": "Pauper",
+      "archetype": "Mono-Green Elves",
+      "author": "anonymous",
+      "createdAt": "2026-09-24"
+    }
+  ]
 }
-]
-}
-
