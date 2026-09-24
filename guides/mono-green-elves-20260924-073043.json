@@ -1,0 +1,70 @@
+{
+  "createdAt": "2026-09-24T07:30:43.167Z",
+  "deck": {
+    "archetype": "Mono-Green Elves",
+    "format": "Pauper",
+    "name": "Mono-Green Elves",
+    "rawText": "4 Avenging Hunter\n4 Elvish Mystic\n9 Forest\n4 Fyndhorn Elves\n4 Generous Ent\n1 Gingerbread Cabin\n2 Land Grant\n4 Lead the Stampede\n4 Masked Vandal\n4 Nyxborn Hydra\n4 Priest of Titania\n4 Quirion Ranger\n3 Sagu Wildling\n4 Timberwatch Elf\n1 Wellwisher\n4 Winding Way\n\n3 Faerie Macabre\n3 Gnaw to the Bone\n4 Monstrous Emergence\n2 Spinewoods Paladin\n3 Vitu-Ghazi Inspector"
+  },
+  "format": "mtg-sideboard-guide",
+  "generator": "Sideboard Guide Builder",
+  "matchups": [
+    "Mono-Red Burn"
+  ],
+  "plan": {
+    "Avenging Hunter": {
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Elvish Mystic": {},
+    "Faerie Macabre": {},
+    "Forest": {},
+    "Fyndhorn Elves": {},
+    "Generous Ent": {},
+    "Gingerbread Cabin": {},
+    "Gnaw to the Bone": {
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Land Grant": {},
+    "Lead the Stampede": {},
+    "Masked Vandal": {
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Monstrous Emergence": {},
+    "Nyxborn Hydra": {},
+    "Priest of Titania": {},
+    "Quirion Ranger": {},
+    "Sagu Wildling": {},
+    "Spinewoods Paladin": {
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Timberwatch Elf": {},
+    "Vitu-Ghazi Inspector": {
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Wellwisher": {},
+    "Winding Way": {}
+  },
+  "titleCard": {
+    "color": null,
+    "fontKey": null,
+    "intensity": null,
+    "symbol": null,
+    "texture": null
+  },
+  "version": 1
+}
