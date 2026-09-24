@@ -1,477 +1,84 @@
+```header
+/simplified-workflow.yml #899 #execute
+```
 ```yaml
 name: Submit Guide
-
 on:
-repository_dispatch:
-types: [submit-guide]
-
+  repository_dispatch:
+    types: [submit-guide]
 permissions:
-contents: write
-pull-requests: write
-
+  contents: write
+  pull-requests: write
 jobs:
-create-pr:
-runs-on: ubuntu-latest
-steps:
-
-uses: actions/checkout@v4
-with:
-fetch-depth: 0
-
-name: Set up Python
-uses: actions/setup-python@v5
-with:
-python-version: '3.11'
-
-name: Rate limit check
-id: ratelimit
-env:
-GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-run: |
-
-Count guide submissions in the last hour.
-cutoffs=
-(
-d
-a
-t
-e
-−
-u
-−
-d
-′
-1
-h
-o
-u
-r
-a
-g
-o
-′
-+
-c
-o
-u
-n
-t
-=
-(date−u−d 
-′
- 1hourago 
-′
- +count=(gh pr list --label guide-submission --state all --json createdAt --jq "[.[] | select(.createdAt >= "
-c
-u
-t
-o
-f
-f
-s
-)
-¨
-]
-∣
-l
-e
-n
-g
-t
-h
-"
-)
-e
-c
-h
-o
-"
-r
-e
-c
-e
-n
-t
-s
-u
-b
-m
-i
-s
-s
-i
-o
-n
-s
-:
-cutoffs 
-)
-¨
-​
- ]∣length")echo"recentsubmissions:count"
-if [ "
-c
-o
-u
-n
-t
-"
-−
-g
-e
-10
-]
-;
-t
-h
-e
-n
-e
-c
-h
-o
-"
-t
-o
-o
-−
-m
-a
-n
-y
-=
-t
-r
-u
-e
-"
->
->
-count"−ge10];thenecho"too−many=true">>GITHUB_OUTPUT
-else
-echo "too-many=false" >> $GITHUB_OUTPUT
-fi
-
-name: Write guide file
-if: steps.ratelimit.outputs.too-many == 'false'
-env:
-PAYLOAD: 
-t
-o
-J
-S
-O
-N
-(
-g
-i
-t
-h
-u
-b
-.
-e
-v
-e
-n
-t
-.
-c
-l
-i
-e
-n
-t
-p
-a
-y
-l
-o
-a
-d
-)
-r
-u
-n
-:
-∣
-m
-k
-d
-i
-r
-−
-p
-g
-u
-i
-d
-e
-s
-e
-c
-h
-o
-"
-toJSON(github.event.client 
-p
-​
- ayload)run:∣mkdir−pguidesecho"PAYLOAD" > /tmp/payload.json
-python3 - <<'PY'
-import json, os, pathlib
-payload = json.load(open("/tmp/payload.json"))
-filename = payload.get("filename") or "untitled.json"
-
-Sanitize
-filename = "".join(c for c in filename if c.isalnum() or c in "._-")
-if not filename.endswith(".json"):
-filename += ".json"
-guide = payload.get("guide") or {}
-meta = payload.get("meta") or {}
-path = pathlib.Path("guides") / filename
-path.write_text(json.dumps(guide, indent=2) + "\n")
-
-Update manifest
-mpath = pathlib.Path("manifest.json")
-manifest = json.loads(mpath.read_text()) if mpath.exists() else {"version": 1, "guides": []}
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rate limit check
+        id: ratelimit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CUTOFF=$(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-1H +%Y-%m-%dT%H:%M:%SZ)
+          COUNT=$(gh pr list --label guide-submission --state all --json createdAt --jq "[.[] | select(.createdAt >= \"$CUTOFF\")] | length")
+          if [ "$COUNT" -ge 10 ]; then echo "too-many=true" >> $GITHUB_OUTPUT; else echo "too-many=false" >> $GITHUB_OUTPUT; fi
+      - name: Write guide file
+        if: steps.ratelimit.outputs.too-many == 'false'
+        env:
+          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+        run: |
+          mkdir -p guides
+          printf '%s' "$PAYLOAD" > /tmp/payload.json
+          python3 -c "
+import json, pathlib, datetime
+payload = json.load(open('/tmp/payload.json'))
+filename = payload.get('filename') or 'untitled.json'
+filename = ''.join(c for c in filename if c.isalnum() or c in '._-')
+if not filename.endswith('.json'):
+    filename += '.json'
+guide = payload.get('guide') or {}
+meta = payload.get('meta') or {}
+(pathlib.Path('guides') / filename).write_text(json.dumps(guide, indent=2) + '\n')
+mpath = pathlib.Path('manifest.json')
+manifest = json.loads(mpath.read_text()) if mpath.exists() else {'version': 1, 'guides': []}
 entry = {
-"file": filename,
-"deckName": meta.get("deckName") or guide.get("deck", {}).get("name") or "Untitled Deck",
-"format": meta.get("format") or guide.get("deck", {}).get("format") or "",
-"archetype": meta.get("archetype") or guide.get("deck", {}).get("archetype") or "",
-"author": meta.get("author") or "anonymous",
-"createdAt": import("datetime").date.today().isoformat()
+    'file': filename,
+    'deckName': meta.get('deckName') or guide.get('deck', {}).get('name') or 'Untitled Deck',
+    'format': meta.get('format') or guide.get('deck', {}).get('format') or '',
+    'archetype': meta.get('archetype') or guide.get('deck', {}).get('archetype') or '',
+    'author': meta.get('author') or 'anonymous',
+    'createdAt': datetime.date.today().isoformat()
 }
-manifest.setdefault("guides", []).append(entry)
-manifest["lastUpdated"] = entry["createdAt"]
-mpath.write_text(json.dumps(manifest, indent=2) + "\n")
-
-with open("/tmp/filename.txt", "w") as f:
-f.write(filename)
-PY
-
-name: Create branch and PR
-if: steps.ratelimit.outputs.too-many == 'false'
-env:
-GH_TOKEN: 
-s
-e
-c
-r
-e
-t
-s
-.
-G
-I
-T
-H
-U
-B
-T
-O
-K
-E
-N
-r
-u
-n
-:
-∣
-F
-I
-L
-E
-N
-A
-M
-E
-=
-secrets.GITHUB 
-T
-​
- OKENrun:∣FILENAME=(cat /tmp/filename.txt)
-BRANCH="guide-submission/
-(
-d
-a
-t
-e
-+
-(date+{FILENAME%.json}"
-git config user.name "guide-bot"
-git config user.email "guide-bot@users.noreply.github.com"
-git checkout -b "
-B
-R
-A
-N
-C
-H
+manifest.setdefault('guides', []).append(entry)
+manifest['lastUpdated'] = entry['createdAt']
+mpath.write_text(json.dumps(manifest, indent=2) + '\n')
+open('/tmp/filename.txt', 'w').write(filename)
 "
-g
-i
-t
-a
-d
-d
-"
-g
-u
-i
-d
-e
-s
-/
-BRANCH"gitadd"guides/FILENAME" manifest.json
-git commit -m "Add guide: 
-F
-I
-L
-E
-N
-A
-M
-E
-"
-g
-i
-t
-p
-u
-s
-h
-−
-u
-o
-r
-i
-g
-i
-n
-"
-FILENAME"gitpush−uorigin"BRANCH"
+      - name: Create branch and PR
+        if: steps.ratelimit.outputs.too-many == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          FILENAME=$(cat /tmp/filename.txt)
+          BRANCH="guide-submission/$(date +%s)-${FILENAME%.json}"
+          git config user.name "guide-bot"
+          git config user.email "guide-bot@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add "guides/$FILENAME" manifest.json
+          git commit -m "Add guide: $FILENAME"
+          git push -u origin "$BRANCH"
+          REPO="${{ github.repository }}"
+          RAW_URL="https://raw.githubusercontent.com/$REPO/$BRANCH/guides/$FILENAME"
+          ENCODED=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$RAW_URL")
+          PREVIEW_URL="https://rndfunction.github.io/sideboardguide.io/?preview=$ENCODED"
+          BODY="New guide submission. File: guides/$FILENAME Preview: $PREVIEW_URL"
+          gh pr create --title "Guide submission: $FILENAME" --body "$BODY" --label guide-submission --head "$BRANCH" --base main
+```
 
-Build a preview link the reviewer can click.
-REPO="
-g
-i
-t
-h
-u
-b
-.
-r
-e
-p
-o
-s
-i
-t
-o
-r
-y
-"
-R
-A
-W
-U
-R
-L
-=
-"
-h
-t
-t
-p
-s
-:
-/
-/
-r
-a
-w
-.
-g
-i
-t
-h
-u
-b
-u
-s
-e
-r
-c
-o
-n
-t
-e
-n
-t
-.
-c
-o
-m
-/
-github.repository"RAW 
-U
-​
- RL="https://raw.githubusercontent.com/REPO/
-B
-R
-A
-N
-C
-H
-/
-g
-u
-i
-d
-e
-s
-/
-BRANCH/guides/FILENAME"
-PREVIEW_URL="https://rndfunction.github.io/sideboardguide.io/?preview=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$RAW_URL")"
-
-BODY=$(cat <<EOF
-
-New guide submission
-File: `guides/$FILENAME`
-
-Preview this guide: $PREVIEW_URL
-
-Click the preview link to open the submitted guide in the app. Review the decklist, matchups, and plan, then merge or close.
-EOF
-)
-
-gh pr create
---title "Guide submission: 
-F
-I
-L
-E
-N
-A
-M
-E
-"
- 
-−
-−
-b
-o
-d
-y
-"
-FILENAME" −−body"BODY"
---label guide-submission
---head "$BRANCH"
---base main || echo "PR creation failed (maybe already exists)"
-
-name: Note if rate limited
-if: steps.ratelimit.outputs.too-many == 'true'
-run: |
-echo "Submission dropped: more than 10 guide PRs opened in the past hour."
+```javascript
+//codebase #step-304
+repo.sendBack({
+  message: "Simplified workflow YAML is in the message body. Copy it into .github/workflows/submit-guide.yml on the SideboardGuides repo.",
+  yamlLineCount: 88
+});
 ```
