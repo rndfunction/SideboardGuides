@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-09-24",
+  "lastUpdated": "2026-09-25",
   "guides": [
     {
       "file": "mono-red-burn-modern.json",
@@ -25,6 +25,14 @@
       "archetype": "Mono-Green Elves",
       "author": "anonymous",
       "createdAt": "2026-09-24"
+    },
+    {
+      "file": "affinity-20260925-020332.json",
+      "deckName": "Affinity",
+      "format": "Pauper",
+      "archetype": "Affinity",
+      "author": "rndfunction",
+      "createdAt": "2026-09-25"
     }
   ]
 }

@@ -1,0 +1,119 @@
+{
+  "createdAt": "2026-09-25T02:03:32.206Z",
+  "deck": {
+    "archetype": "Affinity",
+    "format": "Pauper",
+    "name": "Affinity",
+    "rawText": "4 Blood Fountain\n4 Chromatic Star\n2 Drossforge Bridge\n4 Galvanic Blast\n4 Great Furnace\n2 Ichor Wellspring\n2 Kenku Artificer\n1 Makeshift Munitions\n4 Mistvault Bridge\n4 Myr Enforcer\n3 Nihil Spellbomb\n4 Reckoner's Bargain\n4 Refurbished Familiar\n4 Seat of the Synod\n2 Silverbluff Bridge\n4 Thoughtcast\n4 Utrom Monitor\n4 Vault of Whispers\n\n3 Cast Down\n1 Eviscerator's Insight\n1 Extract a Confession\n3 Hydroblast\n2 Krark-Clan Shaman\n1 Nihil Spellbomb\n2 Red Elemental Blast\n2 Steel Sabotage"
+  },
+  "format": "mtg-sideboard-guide",
+  "generator": "Sideboard Guide Builder",
+  "matchups": [
+    "Mono-Red Burn",
+    "Familiars",
+    "Elves"
+  ],
+  "plan": {
+    "Blood Fountain@main": {
+      "Familiars": {
+        "count": 3,
+        "dir": "out"
+      }
+    },
+    "Cast Down@side": {
+      "Elves": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Familiars": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Chromatic Star@main": {},
+    "Drossforge Bridge@main": {},
+    "Eviscerator's Insight@side": {},
+    "Extract a Confession@side": {
+      "Elves": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Galvanic Blast@main": {},
+    "Great Furnace@main": {},
+    "Hydroblast@side": {
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Ichor Wellspring@main": {},
+    "Kenku Artificer@main": {
+      "Familiars": {
+        "count": 2,
+        "dir": "out"
+      }
+    },
+    "Krark-Clan Shaman@side": {
+      "Elves": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Makeshift Munitions@main": {
+      "Familiars": {
+        "count": 1,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 1,
+        "dir": "out"
+      }
+    },
+    "Mistvault Bridge@main": {},
+    "Myr Enforcer@main": {},
+    "Nihil Spellbomb@main": {
+      "Elves": {
+        "count": 3,
+        "dir": "out"
+      }
+    },
+    "Nihil Spellbomb@side": {
+      "Familiars": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Reckoner's Bargain@main": {},
+    "Red Elemental Blast@side": {
+      "Familiars": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Refurbished Familiar@main": {},
+    "Seat of the Synod@main": {},
+    "Silverbluff Bridge@main": {},
+    "Steel Sabotage@side": {},
+    "Thoughtcast@main": {
+      "Elves": {
+        "count": 3,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "out"
+      }
+    },
+    "Utrom Monitor@main": {},
+    "Vault of Whispers@main": {}
+  },
+  "titleCard": {
+    "color": null,
+    "fontKey": null,
+    "intensity": null,
+    "symbol": null,
+    "texture": null
+  },
+  "version": 1
+}
