@@ -20,7 +20,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           CUTOFF=$(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-1H +%Y-%m-%dT%H:%M:%SZ)
-          COUNT=$(gh pr list --label guide-submission --state all --json createdAt --jq '[.[] | select(.createdAt >= "'"$CUTOFF"'")] | length')
+          COUNT=$(gh pr list --label guide-submission --state all --json createdAt --jq "[.[] | select(.createdAt >= \"$CUTOFF\")] | length" 2>/dev/null || echo 0)
           echo "recent submissions: $COUNT"
           if [ "$COUNT" -ge 10 ]; then
             echo "too-many=true" >> $GITHUB_OUTPUT
@@ -66,7 +66,7 @@ jobs:
           printf '%s' "$PAYLOAD" > /tmp/payload.json
           python3 /tmp/write-guide.py
 
-      - name: Open PR
+      - name: Open PR and queue auto-merge
         if: steps.ratelimit.outputs.too-many == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -85,3 +85,14 @@ jobs:
           PREVIEW_URL="https://rndfunction.github.io/sideboardguide.io/?preview=$ENCODED"
           BODY="New guide submission. File: guides/$FILENAME Preview: $PREVIEW_URL"
           gh pr create --title "Guide submission: $FILENAME" --body "$BODY" --label guide-submission --head "$BRANCH" --base main
+
+          # Give GitHub a moment to register the PR before we try to
+          # queue auto-merge on it.
+          sleep 5
+
+          # Queue auto-merge. If the validate-guide check passes and the
+          # branch protection rules are satisfied, GitHub merges the PR
+          # automatically. Failures here (already merged, race condition,
+          # or auto-merge disabled on the repo) are non-fatal — the PR
+          # stays open for manual review.
+          gh pr merge "$BRANCH" --auto --squash || echo "auto-merge queue failed (non-fatal); PR remains open for review"
