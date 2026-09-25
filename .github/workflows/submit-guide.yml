@@ -69,7 +69,11 @@ jobs:
       - name: Open PR and queue auto-merge
         if: steps.ratelimit.outputs.too-many == 'false'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Use the PAT instead of GITHUB_TOKEN so that workflows triggered
+          # by the resulting pull_request event run without manual approval.
+          # Otherwise validate-guide would sit pending and auto-merge would
+          # never fire.
+          GH_TOKEN: ${{ secrets.SUBMIT_BOT_TOKEN }}
         run: |
           FILENAME=$(cat /tmp/filename.txt)
           BRANCH="guide-submission/$(date +%s)-${FILENAME%.json}"
@@ -78,6 +82,7 @@ jobs:
           git checkout -b "$BRANCH"
           git add "guides/$FILENAME" manifest.json
           git commit -m "Add guide: $FILENAME"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
           git push -u origin "$BRANCH"
           REPO="${{ github.repository }}"
           RAW_URL="https://raw.githubusercontent.com/$REPO/$BRANCH/guides/$FILENAME"
@@ -86,13 +91,10 @@ jobs:
           BODY="New guide submission. File: guides/$FILENAME Preview: $PREVIEW_URL"
           gh pr create --title "Guide submission: $FILENAME" --body "$BODY" --label guide-submission --head "$BRANCH" --base main
 
-          # Give GitHub a moment to register the PR before we try to
-          # queue auto-merge on it.
+          # Give GitHub a moment to register the PR before queuing auto-merge.
           sleep 5
 
-          # Queue auto-merge. If the validate-guide check passes and the
-          # branch protection rules are satisfied, GitHub merges the PR
-          # automatically. Failures here (already merged, race condition,
-          # or auto-merge disabled on the repo) are non-fatal — the PR
-          # stays open for manual review.
+          # Queue auto-merge. If validate-guide passes and branch protection
+          # is satisfied, GitHub merges automatically. Failure is non-fatal
+          # — the PR stays open for manual review.
           gh pr merge "$BRANCH" --auto --squash || echo "auto-merge queue failed (non-fatal); PR remains open for review"
