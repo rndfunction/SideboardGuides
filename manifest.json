@@ -25,6 +25,14 @@
       "archetype": "Affinity",
       "author": "rndfunction",
       "createdAt": "2026-09-25"
+    },
+    {
+      "file": "altar-tron-20260925-134839.json",
+      "deckName": "Altar Tron",
+      "format": "Pauper",
+      "archetype": "Altar Tron",
+      "author": "rndfunction",
+      "createdAt": "2026-09-25"
     }
   ]
 }
