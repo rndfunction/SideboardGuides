@@ -1,0 +1,87 @@
+name: Validate Guide
+
+on:
+  pull_request:
+    paths:
+      - 'guides/*.json'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-guide:
+    name: validate-guide
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find the added guide file
+        id: find
+        run: |
+          FILE=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'guides/*.json' | head -n1)
+          echo "file=$FILE" >> $GITHUB_OUTPUT
+          if [ -z "$FILE" ]; then
+            echo "No new guide file detected — nothing to validate."
+            exit 0
+          fi
+
+      - name: Set up Python
+        if: steps.find.outputs.file != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate guide JSON
+        if: steps.find.outputs.file != ''
+        env:
+          GUIDE_FILE: ${{ steps.find.outputs.file }}
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          path = os.environ['GUIDE_FILE']
+          errors = []
+          try:
+              with open(path) as f:
+                  data = json.load(f)
+          except json.JSONDecodeError as e:
+              print('FAIL: malformed JSON:', e)
+              sys.exit(1)
+
+          if data.get('format') != 'mtg-sideboard-guide':
+              errors.append('format tag must be "mtg-sideboard-guide"')
+
+          deck = data.get('deck') or {}
+          raw = (deck.get('rawText') or '').strip()
+          if not raw:
+              errors.append('deck.rawText is empty')
+
+          matchups = data.get('matchups') or []
+          if not isinstance(matchups, list) or len(matchups) < 1:
+              errors.append('at least one matchup is required')
+
+          plan = data.get('plan') or {}
+          plan_entries = 0
+          if isinstance(plan, dict):
+              for card, by_matchup in plan.items():
+                  if not isinstance(by_matchup, dict):
+                      continue
+                  for entry in by_matchup.values():
+                      if entry:
+                          plan_entries += 1
+          if plan_entries < 1:
+              errors.append('at least one plan entry (IN or OUT) is required')
+
+          if errors:
+              print('Validation failed:')
+              for e in errors:
+                  print('  -', e)
+              sys.exit(1)
+
+          print('Guide valid:', path)
+          print('  deck:', deck.get('name') or '(unnamed)')
+          print('  format:', deck.get('format') or '(none)')
+          print('  matchups:', len(matchups))
+          print('  plan entries:', plan_entries)
+          PY
