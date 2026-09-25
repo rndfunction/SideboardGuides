@@ -1,0 +1,206 @@
+{
+  "createdAt": "2026-09-25T13:48:39.145Z",
+  "deck": {
+    "archetype": "Altar Tron",
+    "format": "Pauper",
+    "name": "Altar Tron",
+    "rawText": "3 Ashnod's Altar\n1 Blood Fountain\n4 Candy Trail\n2 Conduit Pylons\n1 Energy Refractor\n4 Eviscerator's Insight\n4 Expedition Map\n2 Forest\n4 Giant's Boulder\n3 Golem Foundry\n1 Haunted Fengraf\n2 Ichor Wellspring\n4 Malevolent Rumble\n2 Myr Kinsmith\n4 Myr Retriever\n1 Pactdoll Terror\n2 Prophetic Prism\n1 Slippery Karst\n4 Urza's Mine\n4 Urza's Power Plant\n4 Urza's Tower\n3 Weather the Storm\n\n2 Ancient Grudge\n3 Bramble Wurm\n2 Fangren Marauder\n3 Moment's Peace\n3 Pilfer\n1 Vandalblast\n1 Weather the Storm"
+  },
+  "format": "mtg-sideboard-guide",
+  "generator": "Sideboard Guide Builder",
+  "matchups": [
+    "Mono-Red Burn",
+    "Mono-Blue Terror"
+  ],
+  "plan": {
+    "Adarkar Wastes@main": {},
+    "Aluren@main": {},
+    "Ancient Grudge@side": {},
+    "Ashnod's Altar@main": {
+      "Mono-Blue Terror": {
+        "count": 3,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "out"
+      }
+    },
+    "Auramancer@side": {},
+    "Birds of Paradise@main": {},
+    "Blood Fountain (plist) 95@main": {},
+    "Blood Fountain@main": {},
+    "Blue Elemental Blast@side": {},
+    "Boggart Trawler (mh3) 243@main": {},
+    "Bramble Wurm@side": {
+      "Mono-Blue Terror": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Breath Weapon (clb) 165@side": {},
+    "Candy Trail@main": {},
+    "Cast Down (clb) 119@main": {},
+    "Cavern Harpy@main": {},
+    "City of Brass@main": {},
+    "Clarion Conqueror (tdm) 5@side": {},
+    "Cleansing Wildfire (znr) 137@main": {},
+    "Conduit Pylons@main": {},
+    "Consign to Memory (mh3) 54@side": {},
+    "Containment Priest (m21) 13@side": {},
+    "Drossforge Bridge (mh2) 246@main": {},
+    "Duress (dtk) 98@side": {},
+    "Emperor of Bones (mh3) 90@main": {},
+    "Energy Refractor@main": {},
+    "Ephemerate (mar) 44@main": {},
+    "Eviscerator's Insight (mh3) 93@main": {},
+    "Eviscerator's Insight@main": {},
+    "Expedition Map@main": {},
+    "Fanatical Offering (lci) 105@main": {},
+    "Fangren Marauder@side": {
+      "Mono-Blue Terror": {
+        "count": 2,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Fatal Push (acr) 204@main": {},
+    "Flickerwisp (plist) 6@main": {},
+    "Flooded Strand (mh3) 220@main": {},
+    "Forest (thb) 254@main": {},
+    "Forest@main": {},
+    "Genesis@side": {},
+    "Giant's Boulder@main": {},
+    "Gilded Drake@side": {},
+    "Godless Shrine (eoe) 254@main": {},
+    "Golem Foundry@main": {
+      "Mono-Blue Terror": {
+        "count": 1,
+        "dir": "out"
+      }
+    },
+    "Hallowed Fountain (ecl) 347@main": {},
+    "Haunted Fengraf@main": {},
+    "High Noon (otj) 15@side": {},
+    "Ichor Wellspring (mbs) 110@main": {},
+    "Ichor Wellspring@main": {},
+    "Krark-Clan Shaman (mrd) 98@main": {},
+    "Lembas (ltr) 243@main": {},
+    "Makeshift Munitions (jmp) 348@main": {},
+    "Malevolent Rumble@main": {},
+    "Man-o'-War@main": {},
+    "Man-o'-War@side": {},
+    "Marsh Flats (mh2) 248@main": {},
+    "Meddling Mage@main": {},
+    "Meddling Mage@side": {},
+    "Meticulous Archive (mkm) 264@main": {},
+    "Moment's Peace@side": {
+      "Mono-Red Burn": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Monk Realist@main": {},
+    "Mountain (thb) 253@main": {},
+    "Myr Kinsmith@main": {
+      "Mono-Blue Terror": {
+        "count": 2,
+        "dir": "out"
+      }
+    },
+    "Myr Retriever@main": {
+      "Mono-Blue Terror": {
+        "count": 4,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Mystical Dispute (eld) 58@side": {},
+    "Naturalize@side": {},
+    "Nihil Spellbomb (plist) 187@main": {},
+    "Nihil Spellbomb (plist) 187@side": {},
+    "Nyxborn Hydra (mh3) 164@main": {},
+    "Overlord of the Balemurk (dsk) 113@main": {},
+    "Pactdoll Terror@main": {},
+    "Phelia, Exuberant Shepherd (mh3) 40@main": {},
+    "Pilfer@side": {
+      "Mono-Blue Terror": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Plains (thb) 250@main": {},
+    "Plains@main": {},
+    "Polluted Delta (mh3) 224@main": {},
+    "Prismatic Ending (mh2) 25@main": {},
+    "Prophetic Prism@main": {},
+    "Pulse of Murasa (bbd) 209@main": {},
+    "Quantum Riddler (eoe) 72@main": {},
+    "Raven Familiar@main": {},
+    "Ray of Revelation@side": {},
+    "Reflecting Pool@main": {},
+    "Refurbished Familiar (mh3) 105@main": {},
+    "Shadowy Backstreet (mkm) 268@main": {},
+    "Slagwoods Bridge (drc) 171@main": {},
+    "Slippery Karst@main": {},
+    "Solitude (mh2) 32@main": {},
+    "Spike Feeder@main": {},
+    "Squee, Goblin Nabob@main": {},
+    "Survival of the Fittest@main": {},
+    "Swamp (thb) 252@main": {},
+    "Swords to Plowshares@main": {},
+    "Swords to Plowshares@side": {},
+    "Sylvan Library@main": {},
+    "Teferi, Time Raveler (war) 221@main": {},
+    "Terminate (msc) 189@main": {},
+    "Terminate (msc) 189@side": {},
+    "Thoughtseize (ths) 107@main": {},
+    "Toxin Analysis (mkm) 107@main": {},
+    "Treva's Ruins@main": {},
+    "Troublemaker Ouphe (woe) 194@side": {},
+    "Twisted Landscape (mh3) 232@main": {},
+    "Uktabi Orangutan@main": {},
+    "Undercity Sewers (pza) 20@main": {},
+    "Undiscovered Paradise@main": {},
+    "Urza's Mine@main": {},
+    "Urza's Power Plant@main": {},
+    "Urza's Tower@main": {},
+    "Vandalblast@side": {},
+    "Vault of Whispers (pc1) 141@main": {},
+    "Wall of Blossoms@main": {},
+    "Wall of Roots@main": {},
+    "Watery Grave (eoe) 261@main": {},
+    "Weather the Storm (mh1) 191@side": {},
+    "Weather the Storm@main": {},
+    "Weather the Storm@side": {
+      "Mono-Red Burn": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Windswept Heath@main": {},
+    "Witch Enchanter (mh3) 239@main": {},
+    "Wrath of the Skies (mh3) 49@side": {},
+    "Writhing Chrysalis (mh3) 208@main": {},
+    "Xantid Swarm@side": {},
+    "Yavimaya Coast@main": {}
+  },
+  "titleCard": {
+    "color": null,
+    "fontKey": null,
+    "intensity": null,
+    "symbol": null,
+    "texture": null
+  },
+  "version": 1
+}
