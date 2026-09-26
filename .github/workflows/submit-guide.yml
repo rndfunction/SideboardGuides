@@ -28,11 +28,11 @@ jobs:
             echo "too-many=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Stage helper script
+      - name: Stage helper scripts
         if: steps.ratelimit.outputs.too-many == 'false'
         run: |
           cat > /tmp/write-guide.py <<'PY'
-          import json, pathlib, datetime
+          import json, pathlib, datetime, re
           payload = json.load(open('/tmp/payload.json'))
           filename = payload.get('filename') or 'untitled.json'
           filename = ''.join(c for c in filename if c.isalnum() or c in '._-')
@@ -43,18 +43,27 @@ jobs:
           (pathlib.Path('guides') / filename).write_text(json.dumps(guide, indent=2) + chr(10))
           mpath = pathlib.Path('manifest.json')
           manifest = json.loads(mpath.read_text()) if mpath.exists() else {'version': 1, 'guides': []}
+          archetype = meta.get('archetype') or guide.get('deck', {}).get('archetype') or ''
+          archetype_key = re.sub(r'[^a-z0-9]+', '-', archetype.strip().lower()).strip('-')
           entry = {
               'file': filename,
               'deckName': meta.get('deckName') or guide.get('deck', {}).get('name') or 'Untitled Deck',
               'format': meta.get('format') or guide.get('deck', {}).get('format') or '',
-              'archetype': meta.get('archetype') or guide.get('deck', {}).get('archetype') or '',
+              'archetype': archetype,
+              'archetypeKey': archetype_key,
               'author': meta.get('author') or 'anonymous',
-              'createdAt': datetime.date.today().isoformat()
+              'tags': [],
+              'verified': False,
+              'createdAt': datetime.date.today().isoformat(),
+              'lastEditedAt': datetime.date.today().isoformat()
           }
           manifest.setdefault('guides', []).append(entry)
           manifest['lastUpdated'] = entry['createdAt']
           mpath.write_text(json.dumps(manifest, indent=2) + chr(10))
           open('/tmp/filename.txt', 'w').write(filename)
+          PY
+          cat > /tmp/index_builder.py <<'PY'
+          PLACEHOLDER_INDEX_BUILDER
           PY
 
       - name: Write guide file
@@ -65,6 +74,11 @@ jobs:
           mkdir -p guides
           printf '%s' "$PAYLOAD" > /tmp/payload.json
           python3 /tmp/write-guide.py
+
+      - name: Rebuild archetype index
+        if: steps.ratelimit.outputs.too-many == 'false'
+        run: |
+          python3 /tmp/index_builder.py --manifest manifest.json --guides guides --out archetypes.json
 
       - name: Open PR and queue auto-merge
         if: steps.ratelimit.outputs.too-many == 'false'
@@ -80,7 +94,7 @@ jobs:
           git config user.name "guide-bot"
           git config user.email "guide-bot@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add "guides/$FILENAME" manifest.json
+          git add "guides/$FILENAME" manifest.json archetypes.json
           git commit -m "Add guide: $FILENAME"
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
           git push -u origin "$BRANCH"
@@ -96,5 +110,5 @@ jobs:
 
           # Queue auto-merge. If validate-guide passes and branch protection
           # is satisfied, GitHub merges automatically. Failure is non-fatal
-          # — the PR stays open for manual review.
+          # -- the PR stays open for manual review.
           gh pr merge "$BRANCH" --auto --squash || echo "auto-merge queue failed (non-fatal); PR remains open for review"
