@@ -28,9 +28,13 @@ jobs:
             echo "too-many=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Stage helper scripts
+      - name: Write guide file
         if: steps.ratelimit.outputs.too-many == 'false'
+        env:
+          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
         run: |
+          mkdir -p guides
+          printf '%s' "$PAYLOAD" > /tmp/payload.json
           cat > /tmp/write-guide.py <<'PY'
           import json, pathlib, datetime, re
           payload = json.load(open('/tmp/payload.json'))
@@ -62,23 +66,12 @@ jobs:
           mpath.write_text(json.dumps(manifest, indent=2) + chr(10))
           open('/tmp/filename.txt', 'w').write(filename)
           PY
-          cat > /tmp/index_builder.py <<'PY'
-          PLACEHOLDER_INDEX_BUILDER
-          PY
-
-      - name: Write guide file
-        if: steps.ratelimit.outputs.too-many == 'false'
-        env:
-          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
-        run: |
-          mkdir -p guides
-          printf '%s' "$PAYLOAD" > /tmp/payload.json
           python3 /tmp/write-guide.py
 
       - name: Rebuild archetype index
         if: steps.ratelimit.outputs.too-many == 'false'
         run: |
-          python3 /tmp/index_builder.py --manifest manifest.json --guides guides --out archetypes.json
+          python3 index_builder.py --manifest manifest.json --guides guides --out archetypes.json
 
       - name: Open PR and queue auto-merge
         if: steps.ratelimit.outputs.too-many == 'false'
