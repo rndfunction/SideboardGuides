@@ -1,0 +1,144 @@
+{
+  "createdAt": "2026-09-26T00:10:44.621Z",
+  "deck": {
+    "archetype": "Mono-Green Elves",
+    "format": "Pauper",
+    "name": "Mono-Green Elves",
+    "rawText": "4 Avenging Hunter\n4 Elvish Mystic\n9 Forest\n4 Fyndhorn Elves\n4 Generous Ent\n1 Gingerbread Cabin\n2 Land Grant\n4 Lead the Stampede\n4 Masked Vandal\n4 Nyxborn Hydra\n4 Priest of Titania\n4 Quirion Ranger\n3 Sagu Wildling\n4 Timberwatch Elf\n1 Wellwisher\n4 Winding Way\n\n3 Faerie Macabre\n3 Gnaw to the Bone\n3 Scattershot Archer\n1 Wrap in Vigor\n2 Spinewoods Paladin\n3 Vitu-Ghazi Inspector"
+  },
+  "format": "mtg-sideboard-guide",
+  "generator": "Sideboard Guide Builder",
+  "matchups": [
+    "Mono-Red Burn",
+    "Kuldotha Red",
+    "Grixis Affinity",
+    "Terror",
+    "Cycle Storm"
+  ],
+  "plan": {
+    "Avenging Hunter@main": {
+      "Cycle Storm": {
+        "count": 1,
+        "dir": "out"
+      },
+      "Grixis Affinity": {
+        "count": 2,
+        "dir": "out"
+      },
+      "Kuldotha Red": {
+        "count": 4,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Elvish Mystic@main": {},
+    "Faerie Macabre@side": {
+      "Cycle Storm": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Forest@main": {},
+    "Fyndhorn Elves@main": {},
+    "Generous Ent@main": {},
+    "Gingerbread Cabin@main": {},
+    "Gnaw to the Bone@side": {
+      "Kuldotha Red": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Land Grant@main": {},
+    "Lead the Stampede@main": {
+      "Cycle Storm": {
+        "count": 2,
+        "dir": "out"
+      }
+    },
+    "Masked Vandal@main": {
+      "Kuldotha Red": {
+        "count": 4,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      },
+      "Terror": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Monstrous Emergence@side": {},
+    "Nyxborn Hydra@main": {},
+    "Priest of Titania@main": {},
+    "Quirion Ranger@main": {},
+    "Sagu Wildling@main": {},
+    "Scattershot Archer@side": {},
+    "Spinewoods Paladin@side": {
+      "Grixis Affinity": {
+        "count": 2,
+        "dir": "in"
+      },
+      "Kuldotha Red": {
+        "count": 1,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "in"
+      },
+      "Terror": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Timberwatch Elf@main": {},
+    "Vitu-Ghazi Inspector@side": {
+      "Kuldotha Red": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Terror": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Wellwisher@main": {
+      "Grixis Affinity": {
+        "count": 1,
+        "dir": "out"
+      }
+    },
+    "Winding Way@main": {},
+    "Wrap in Vigor@side": {
+      "Grixis Affinity": {
+        "count": 1,
+        "dir": "in"
+      },
+      "Kuldotha Red": {
+        "count": 1,
+        "dir": "in"
+      }
+    }
+  },
+  "titleCard": {
+    "color": null,
+    "fontKey": null,
+    "intensity": null,
+    "symbol": null,
+    "texture": null
+  },
+  "version": 1
+}
