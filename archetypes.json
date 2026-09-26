@@ -1,0 +1,696 @@
+{
+  "version": 2,
+  "lastUpdated": "2026-09-26",
+  "archetypes": [
+    {
+      "key": "mono-green-elves",
+      "name": "Mono-Green Elves",
+      "format": "Pauper",
+      "guideCount": 2,
+      "cardFrequency": [
+        {
+          "name": "Avenging Hunter",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Elvish Mystic",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Forest",
+          "inclusion": 1.0,
+          "avgCopies": 9.0
+        },
+        {
+          "name": "Fyndhorn Elves",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Generous Ent",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Gingerbread Cabin",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Land Grant",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Lead the Stampede",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Masked Vandal",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Nyxborn Hydra",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Priest of Titania",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Quirion Ranger",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Sagu Wildling",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Timberwatch Elf",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Wellwisher",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Winding Way",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        }
+      ],
+      "boardInMatrix": {
+        "Cycle Storm": [
+          {
+            "name": "Faerie Macabre",
+            "inclusion": 0.5,
+            "avgCopies": 3.0
+          }
+        ],
+        "Grixis Affinity": [
+          {
+            "name": "Spinewoods Paladin",
+            "inclusion": 0.5,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Wrap in Vigor",
+            "inclusion": 0.5,
+            "avgCopies": 1.0
+          }
+        ],
+        "Kuldotha Red": [
+          {
+            "name": "Gnaw to the Bone",
+            "inclusion": 0.5,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Vitu-Ghazi Inspector",
+            "inclusion": 0.5,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Spinewoods Paladin",
+            "inclusion": 0.5,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Wrap in Vigor",
+            "inclusion": 0.5,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Gnaw to the Bone",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Vitu-Ghazi Inspector",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Spinewoods Paladin",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Terror": [
+          {
+            "name": "Spinewoods Paladin",
+            "inclusion": 0.5,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Vitu-Ghazi Inspector",
+            "inclusion": 0.5,
+            "avgCopies": 2.0
+          }
+        ]
+      },
+      "tags": [],
+      "guides": [
+        {
+          "file": "mono-green-elves-20260926-001044-9e36.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-26",
+          "overlapWithCore": 1.0
+        },
+        {
+          "file": "mono-green-elves-20260924-073043.json",
+          "author": "anonymous",
+          "verified": false,
+          "lastEditedAt": "2026-09-24",
+          "overlapWithCore": 1.0
+        }
+      ]
+    },
+    {
+      "key": "affinity",
+      "name": "Affinity",
+      "format": "Pauper",
+      "guideCount": 1,
+      "cardFrequency": [
+        {
+          "name": "Blood Fountain",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Chromatic Star",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Drossforge Bridge",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Galvanic Blast",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Great Furnace",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Ichor Wellspring",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Kenku Artificer",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Makeshift Munitions",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Mistvault Bridge",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Myr Enforcer",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Nihil Spellbomb",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Reckoner's Bargain",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Refurbished Familiar",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Seat of the Synod",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Silverbluff Bridge",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Thoughtcast",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Utrom Monitor",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Vault of Whispers",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        }
+      ],
+      "boardInMatrix": {
+        "Elves": [
+          {
+            "name": "Cast Down",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Krark-Clan Shaman",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Extract a Confession",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Familiars": [
+          {
+            "name": "Cast Down",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Red Elemental Blast",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Nihil Spellbomb",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Hydroblast",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          }
+        ]
+      },
+      "tags": [],
+      "guides": [
+        {
+          "file": "affinity-20260925-020332.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-25",
+          "overlapWithCore": 1.0
+        }
+      ]
+    },
+    {
+      "key": "altar-tron",
+      "name": "Altar Tron",
+      "format": "Pauper",
+      "guideCount": 1,
+      "cardFrequency": [
+        {
+          "name": "Ashnod's Altar",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Blood Fountain",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Candy Trail",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Conduit Pylons",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Energy Refractor",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Eviscerator's Insight",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Expedition Map",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Forest",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Giant's Boulder",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Golem Foundry",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Haunted Fengraf",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Ichor Wellspring",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Malevolent Rumble",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Myr Kinsmith",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Myr Retriever",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Pactdoll Terror",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Prophetic Prism",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Slippery Karst",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Urza's Mine",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Urza's Power Plant",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Urza's Tower",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Weather the Storm",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        }
+      ],
+      "boardInMatrix": {
+        "Mono-Blue Terror": [
+          {
+            "name": "Bramble Wurm",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Pilfer",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Fangren Marauder",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Bramble Wurm",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Fangren Marauder",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Moment's Peace",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Weather the Storm",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ]
+      },
+      "tags": [],
+      "guides": [
+        {
+          "file": "altar-tron-20260925-134839.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-25",
+          "overlapWithCore": 1.0
+        }
+      ]
+    },
+    {
+      "key": "dimir-faeries",
+      "name": "Dimir Faeries",
+      "format": "Pauper",
+      "guideCount": 1,
+      "cardFrequency": [
+        {
+          "name": "Augur of Bolas",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Bojuka Bog",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Brainstorm",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Cast Down",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Contaminated Aquifer",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Contaminated Landscape",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Counterspell",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Dispel",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Extract a Confession",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Faerie Seer",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Island",
+          "inclusion": 1.0,
+          "avgCopies": 10.0
+        },
+        {
+          "name": "Lorien Revealed",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Moon-Circuit Hacker",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Ninja of the Deep Hours",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Sewer-veillance Cam",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Snuff Out",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Spellstutter Sprite",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Suffocating Fumes",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Swamp",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Thorn of the Black Rose",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        }
+      ],
+      "boardInMatrix": {
+        "Affinity": [
+          {
+            "name": "Annul",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Okiba-Gang Shinobi",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Bogles": [
+          {
+            "name": "Annul",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Arms of Hadar",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Extract a Confession",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Mukotai Ambusher",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Okiba-Gang Shinobi",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Blue Terror": [
+          {
+            "name": "Relic of Progenitus",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Extract a Confession",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Okiba-Gang Shinobi",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Blue Elemental Blast",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Hydroblast",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Mukotai Ambusher",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ]
+      },
+      "tags": [],
+      "guides": [
+        {
+          "file": "dimir-faeries-20260926-150512-3e6b.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-26",
+          "overlapWithCore": 1.0
+        }
+      ]
+    }
+  ]
+}

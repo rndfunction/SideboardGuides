@@ -41,6 +41,18 @@
       "archetype": "Mono-Green Elves",
       "author": "rndfunction",
       "createdAt": "2026-09-26"
+    },
+    {
+      "file": "dimir-faeries-20260926-150512-3e6b.json",
+      "deckName": "Dimir Faeries",
+      "format": "Pauper",
+      "archetype": "Dimir Faeries",
+      "archetypeKey": "dimir-faeries",
+      "author": "rndfunction",
+      "tags": [],
+      "verified": false,
+      "createdAt": "2026-09-26",
+      "lastEditedAt": "2026-09-26"
     }
   ]
 }

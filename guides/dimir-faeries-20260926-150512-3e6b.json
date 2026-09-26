@@ -1,0 +1,157 @@
+{
+  "createdAt": "2026-09-26T15:05:12.126Z",
+  "deck": {
+    "archetype": "Dimir Faeries",
+    "format": "Pauper",
+    "name": "Dimir Faeries",
+    "rawText": "4 Augur of Bolas\n2 Bojuka Bog\n4 Brainstorm\n3 Cast Down\n4 Contaminated Aquifer\n1 Contaminated Landscape\n4 Counterspell\n2 Dispel\n1 Extract a Confession\n4 Faerie Seer\n10 Island\n4 Lorien Revealed\n2 Moon-Circuit Hacker\n2 Ninja of the Deep Hours\n1 Sewer-veillance Cam\n4 Snuff Out\n4 Spellstutter Sprite\n1 Suffocating Fumes\n1 Swamp\n2 Thorn of the Black Rose\n\n3 Annul\n1 Arms of Hadar\n4 Blue Elemental Blast\n1 Extract a Confession\n2 Hydroblast\n1 Mukotai Ambusher\n1 Okiba-Gang Shinobi\n2 Relic of Progenitus"
+  },
+  "format": "mtg-sideboard-guide",
+  "generator": "Sideboard Guide Builder",
+  "matchups": [
+    "Mono-Red Burn",
+    "Mono-Blue Terror",
+    "Bogles",
+    "Affinity"
+  ],
+  "plan": {
+    "Annul@side": {
+      "Affinity": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Bogles": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Arms of Hadar@side": {
+      "Bogles": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Augur of Bolas@main": {},
+    "Blue Elemental Blast@side": {
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "in"
+      }
+    },
+    "Bojuka Bog@main": {},
+    "Brainstorm@main": {},
+    "Cast Down@main": {
+      "Bogles": {
+        "count": 3,
+        "dir": "out"
+      },
+      "Mono-Blue Terror": {
+        "count": 2,
+        "dir": "out"
+      }
+    },
+    "Contaminated Aquifer@main": {},
+    "Contaminated Landscape@main": {},
+    "Counterspell@main": {},
+    "Dispel@main": {},
+    "Extract a Confession@main": {
+      "Mono-Red Burn": {
+        "count": 1,
+        "dir": "out"
+      }
+    },
+    "Extract a Confession@side": {
+      "Bogles": {
+        "count": 1,
+        "dir": "in"
+      },
+      "Mono-Blue Terror": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Faerie Seer@main": {},
+    "Hydroblast@side": {
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Island@main": {},
+    "Lorien Revealed@main": {},
+    "Moon-Circuit Hacker@main": {},
+    "Mukotai Ambusher@side": {
+      "Bogles": {
+        "count": 1,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Ninja of the Deep Hours@main": {},
+    "Okiba-Gang Shinobi@side": {
+      "Affinity": {
+        "count": 1,
+        "dir": "in"
+      },
+      "Bogles": {
+        "count": 1,
+        "dir": "in"
+      },
+      "Mono-Blue Terror": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Relic of Progenitus@side": {
+      "Mono-Blue Terror": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Sewer-veillance Cam@main": {
+      "Mono-Blue Terror": {
+        "count": 1,
+        "dir": "out"
+      }
+    },
+    "Snuff Out@main": {
+      "Affinity": {
+        "count": 4,
+        "dir": "out"
+      },
+      "Bogles": {
+        "count": 4,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Spellstutter Sprite@main": {},
+    "Suffocating Fumes@main": {
+      "Mono-Blue Terror": {
+        "count": 1,
+        "dir": "out"
+      }
+    },
+    "Swamp@main": {},
+    "Thorn of the Black Rose@main": {
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "out"
+      }
+    }
+  },
+  "titleCard": {
+    "color": null,
+    "fontKey": null,
+    "intensity": null,
+    "symbol": null,
+    "texture": null
+  },
+  "version": 1
+}
