@@ -77,6 +77,18 @@
       "verified": false,
       "createdAt": "2026-09-27",
       "lastEditedAt": "2026-09-27"
+    },
+    {
+      "file": "affinity-20260927-203851-c872.json",
+      "deckName": "Affinity",
+      "format": "Pauper",
+      "archetype": "Affinity",
+      "archetypeKey": "affinity",
+      "author": "rndfunction",
+      "tags": [],
+      "verified": false,
+      "createdAt": "2026-09-27",
+      "lastEditedAt": "2026-09-27"
     }
   ]
 }

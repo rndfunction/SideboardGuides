@@ -1,12 +1,12 @@
 {
-  "version": 2,
+  "version": 3,
   "lastUpdated": "2026-09-27",
   "archetypes": [
     {
       "key": "affinity",
       "name": "Affinity",
       "format": "Pauper",
-      "guideCount": 2,
+      "guideCount": 3,
       "cardFrequency": [
         {
           "name": "Blood Fountain",
@@ -141,8 +141,61 @@
             "avgCopies": 3.0
           },
           {
+            "name": "Red Elemental Blast",
+            "inclusion": 0.3333,
+            "avgCopies": 2.0
+          },
+          {
             "name": "Steel Sabotage",
-            "inclusion": 0.5,
+            "inclusion": 0.3333,
+            "avgCopies": 2.0
+          }
+        ]
+      },
+      "boardOutMatrix": {
+        "Elves": [
+          {
+            "name": "Nihil Spellbomb",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Thoughtcast",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          }
+        ],
+        "Familiars": [
+          {
+            "name": "Blood Fountain",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Kenku Artificer",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Makeshift Munitions",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Thoughtcast",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Makeshift Munitions",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Kenku Artificer",
+            "inclusion": 0.6667,
             "avgCopies": 2.0
           }
         ]
@@ -151,6 +204,13 @@
       "guides": [
         {
           "file": "affinity-20260927-183204-8895.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-27",
+          "overlapWithCore": 1.0
+        },
+        {
+          "file": "affinity-20260927-203851-c872.json",
           "author": "rndfunction",
           "verified": false,
           "lastEditedAt": "2026-09-27",
@@ -321,6 +381,63 @@
             "name": "Vitu-Ghazi Inspector",
             "inclusion": 0.5,
             "avgCopies": 2.0
+          }
+        ]
+      },
+      "boardOutMatrix": {
+        "Cycle Storm": [
+          {
+            "name": "Lead the Stampede",
+            "inclusion": 0.5,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Avenging Hunter",
+            "inclusion": 0.5,
+            "avgCopies": 1.0
+          }
+        ],
+        "Grixis Affinity": [
+          {
+            "name": "Avenging Hunter",
+            "inclusion": 0.5,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Wellwisher",
+            "inclusion": 0.5,
+            "avgCopies": 1.0
+          }
+        ],
+        "Kuldotha Red": [
+          {
+            "name": "Avenging Hunter",
+            "inclusion": 0.5,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Masked Vandal",
+            "inclusion": 0.5,
+            "avgCopies": 4.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Avenging Hunter",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Masked Vandal",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          }
+        ],
+        "Terror": [
+          {
+            "name": "Masked Vandal",
+            "inclusion": 0.5,
+            "avgCopies": 4.0
           }
         ]
       },
@@ -497,6 +614,42 @@
             "name": "Weather the Storm",
             "inclusion": 1.0,
             "avgCopies": 1.0
+          }
+        ]
+      },
+      "boardOutMatrix": {
+        "Mono-Blue Terror": [
+          {
+            "name": "Myr Retriever",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Ashnod's Altar",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Myr Kinsmith",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Golem Foundry",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Myr Retriever",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Ashnod's Altar",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
           }
         ]
       },
@@ -693,6 +846,61 @@
           }
         ]
       },
+      "boardOutMatrix": {
+        "Affinity": [
+          {
+            "name": "Snuff Out",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          }
+        ],
+        "Bogles": [
+          {
+            "name": "Snuff Out",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Cast Down",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          }
+        ],
+        "Mono-Blue Terror": [
+          {
+            "name": "Cast Down",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Sewer-veillance Cam",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          },
+          {
+            "name": "Suffocating Fumes",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Snuff Out",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Thorn of the Black Rose",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Extract a Confession",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ]
+      },
       "tags": [],
       "guides": [
         {
@@ -871,6 +1079,111 @@
           },
           {
             "name": "Steel Sabotage",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ]
+      },
+      "boardOutMatrix": {
+        "Affinity": [
+          {
+            "name": "Force Spike",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Sleep of the Dead",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Plunder the Trollshaws",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Bogles": [
+          {
+            "name": "Sleep of the Dead",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Plunder the Trollshaws",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Elves": [
+          {
+            "name": "Force Spike",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Sleep of the Dead",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Golgari Gardens": [
+          {
+            "name": "Deem Inferior",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Sleep of the Dead",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Izzet Faeries": [
+          {
+            "name": "Ponder",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Mono Red Madness": [
+          {
+            "name": "Counterspell",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Sleep of the Dead",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Mono U Faeries": [
+          {
+            "name": "Ponder",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Counterspell",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Sleep of the Dead",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Tron": [
+          {
+            "name": "Force Spike",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Deem Inferior",
             "inclusion": 1.0,
             "avgCopies": 2.0
           }
