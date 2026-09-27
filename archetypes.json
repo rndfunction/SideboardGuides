@@ -3,6 +3,169 @@
   "lastUpdated": "2026-09-27",
   "archetypes": [
     {
+      "key": "affinity",
+      "name": "Affinity",
+      "format": "Pauper",
+      "guideCount": 2,
+      "cardFrequency": [
+        {
+          "name": "Blood Fountain",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Chromatic Star",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Drossforge Bridge",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Galvanic Blast",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Great Furnace",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Ichor Wellspring",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Kenku Artificer",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Makeshift Munitions",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Mistvault Bridge",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Myr Enforcer",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Nihil Spellbomb",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Reckoner's Bargain",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Refurbished Familiar",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Seat of the Synod",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Silverbluff Bridge",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Thoughtcast",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Utrom Monitor",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Vault of Whispers",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        }
+      ],
+      "boardInMatrix": {
+        "Elves": [
+          {
+            "name": "Cast Down",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Krark-Clan Shaman",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Extract a Confession",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Familiars": [
+          {
+            "name": "Cast Down",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Red Elemental Blast",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Nihil Spellbomb",
+            "inclusion": 1.0,
+            "avgCopies": 1.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Hydroblast",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Steel Sabotage",
+            "inclusion": 0.5,
+            "avgCopies": 2.0
+          }
+        ]
+      },
+      "tags": [],
+      "guides": [
+        {
+          "file": "affinity-20260927-183204-8895.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-27",
+          "overlapWithCore": 1.0
+        },
+        {
+          "file": "affinity-20260925-020332.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-25",
+          "overlapWithCore": 1.0
+        }
+      ]
+    },
+    {
       "key": "mono-green-elves",
       "name": "Mono-Green Elves",
       "format": "Pauper",
@@ -175,157 +338,6 @@
           "author": "anonymous",
           "verified": false,
           "lastEditedAt": "2026-09-24",
-          "overlapWithCore": 1.0
-        }
-      ]
-    },
-    {
-      "key": "affinity",
-      "name": "Affinity",
-      "format": "Pauper",
-      "guideCount": 1,
-      "cardFrequency": [
-        {
-          "name": "Blood Fountain",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Chromatic Star",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Drossforge Bridge",
-          "inclusion": 1.0,
-          "avgCopies": 2.0
-        },
-        {
-          "name": "Galvanic Blast",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Great Furnace",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Ichor Wellspring",
-          "inclusion": 1.0,
-          "avgCopies": 2.0
-        },
-        {
-          "name": "Kenku Artificer",
-          "inclusion": 1.0,
-          "avgCopies": 2.0
-        },
-        {
-          "name": "Makeshift Munitions",
-          "inclusion": 1.0,
-          "avgCopies": 1.0
-        },
-        {
-          "name": "Mistvault Bridge",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Myr Enforcer",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Nihil Spellbomb",
-          "inclusion": 1.0,
-          "avgCopies": 3.0
-        },
-        {
-          "name": "Reckoner's Bargain",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Refurbished Familiar",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Seat of the Synod",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Silverbluff Bridge",
-          "inclusion": 1.0,
-          "avgCopies": 2.0
-        },
-        {
-          "name": "Thoughtcast",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Utrom Monitor",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        },
-        {
-          "name": "Vault of Whispers",
-          "inclusion": 1.0,
-          "avgCopies": 4.0
-        }
-      ],
-      "boardInMatrix": {
-        "Elves": [
-          {
-            "name": "Cast Down",
-            "inclusion": 1.0,
-            "avgCopies": 3.0
-          },
-          {
-            "name": "Krark-Clan Shaman",
-            "inclusion": 1.0,
-            "avgCopies": 2.0
-          },
-          {
-            "name": "Extract a Confession",
-            "inclusion": 1.0,
-            "avgCopies": 1.0
-          }
-        ],
-        "Familiars": [
-          {
-            "name": "Cast Down",
-            "inclusion": 1.0,
-            "avgCopies": 3.0
-          },
-          {
-            "name": "Red Elemental Blast",
-            "inclusion": 1.0,
-            "avgCopies": 2.0
-          },
-          {
-            "name": "Nihil Spellbomb",
-            "inclusion": 1.0,
-            "avgCopies": 1.0
-          }
-        ],
-        "Mono-Red Burn": [
-          {
-            "name": "Hydroblast",
-            "inclusion": 1.0,
-            "avgCopies": 3.0
-          }
-        ]
-      },
-      "tags": [],
-      "guides": [
-        {
-          "file": "affinity-20260925-020332.json",
-          "author": "rndfunction",
-          "verified": false,
-          "lastEditedAt": "2026-09-25",
           "overlapWithCore": 1.0
         }
       ]
