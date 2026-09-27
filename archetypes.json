@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "lastUpdated": "2026-09-26",
+  "lastUpdated": "2026-09-27",
   "archetypes": [
     {
       "key": "mono-green-elves",
@@ -688,6 +688,189 @@
           "author": "rndfunction",
           "verified": false,
           "lastEditedAt": "2026-09-26",
+          "overlapWithCore": 1.0
+        }
+      ]
+    },
+    {
+      "key": "mono-blue-terror",
+      "name": "Mono-Blue Terror",
+      "format": "Pauper",
+      "guideCount": 1,
+      "cardFrequency": [
+        {
+          "name": "Brainstorm",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Counterspell",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Cryptic Serpent",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Deem Inferior",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Delver of Secrets",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Force Spike",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Island",
+          "inclusion": 1.0,
+          "avgCopies": 16.0
+        },
+        {
+          "name": "Lorien Revealed",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Mental Note",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Plunder the Trollshaws",
+          "inclusion": 1.0,
+          "avgCopies": 1.0
+        },
+        {
+          "name": "Ponder",
+          "inclusion": 1.0,
+          "avgCopies": 3.0
+        },
+        {
+          "name": "Sleep of the Dead",
+          "inclusion": 1.0,
+          "avgCopies": 2.0
+        },
+        {
+          "name": "Thought Scour",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        },
+        {
+          "name": "Tolarian Terror",
+          "inclusion": 1.0,
+          "avgCopies": 4.0
+        }
+      ],
+      "boardInMatrix": {
+        "Affinity": [
+          {
+            "name": "Annul",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Steel Sabotage",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Bogles": [
+          {
+            "name": "Annul",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          }
+        ],
+        "Elves": [
+          {
+            "name": "Envelop",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Gut Shot",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Golgari Gardens": [
+          {
+            "name": "Annul",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Envelop",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Izzet Faeries": [
+          {
+            "name": "Gut Shot",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Mono Red Madness": [
+          {
+            "name": "Hydroblast",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Blue Elemental Blast",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Mono U Faeries": [
+          {
+            "name": "Gut Shot",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Mono-Red Burn": [
+          {
+            "name": "Hydroblast",
+            "inclusion": 1.0,
+            "avgCopies": 4.0
+          },
+          {
+            "name": "Blue Elemental Blast",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ],
+        "Tron": [
+          {
+            "name": "Annul",
+            "inclusion": 1.0,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Steel Sabotage",
+            "inclusion": 1.0,
+            "avgCopies": 2.0
+          }
+        ]
+      },
+      "tags": [],
+      "guides": [
+        {
+          "file": "mono-blue-terror-20260927-155356-2641.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-27",
           "overlapWithCore": 1.0
         }
       ]
