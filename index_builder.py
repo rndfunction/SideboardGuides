@@ -111,12 +111,18 @@ def mainboard_cards(raw_text):
     return dict(cards)
 
 
-def board_in_by_matchup(plan):
-    """Return {matchup: {card_name: [counts]}} for cards boarded IN.
+def board_by_matchup(plan, direction):
+    """Return {matchup: {card_name: [counts]}} for cards moved `direction`.
 
-    `plan` is a guide's plan object: plan[cardKey][matchup] = {dir, count}.
-    cardKey is "name@side" for sideboard cards. Only dir == "in" is
-    counted (v2 covers board-IN only; board-OUT is not aggregated).
+    `direction` is "in" (sideboard cards brought in) or "out" (maindeck
+    cards cut). `plan` is a guide's plan object:
+    plan[cardKey][matchup] = {dir, count}, where cardKey is
+    "name@main" or "name@side".
+
+    For "in", only @side keys are considered; for "out", only @main keys.
+    This keeps IN and OUT from double-counting a card that appears in both
+    sections. The bare-name fallback (no @ suffix) is accepted for "in"
+    for backward compatibility with very old guides.
     """
     out = collections.defaultdict(lambda: collections.defaultdict(list))
     if not isinstance(plan, dict):
@@ -124,15 +130,21 @@ def board_in_by_matchup(plan):
     for key, by_matchup in plan.items():
         if not isinstance(by_matchup, dict):
             continue
-        # Only sideboard cards board in; main cards board out. We key on
-        # the "@side" suffix but also accept a bare name defensively.
-        if "@main" in key:
-            continue
+        has_main = "@main" in key
+        has_side = "@side" in key
+        if direction == "in":
+            # Sideboard cards board in. Skip main; accept bare names.
+            if has_main:
+                continue
+        else:  # "out"
+            # Maindeck cards board out. Skip side.
+            if has_side:
+                continue
         name = key.split("@")[0]
         for matchup, entry in by_matchup.items():
             if not entry:
                 continue
-            if isinstance(entry, dict) and entry.get("dir") != "in":
+            if isinstance(entry, dict) and entry.get("dir") != direction:
                 continue
             count = entry.get("count") if isinstance(entry, dict) else 0
             out[matchup][name].append(int(count) if count else 0)
@@ -215,32 +227,38 @@ def build_index(manifest, guides_dir):
                                        _desc_str(x["lastEditedAt"]),
                                        x["file"]))
 
-        # --- boardInMatrix (v2) ---
+        # --- boardInMatrix / boardOutMatrix (v2 / v3) ---
         # Aggregate across guides: per matchup, per card, inclusion is the
-        # fraction of guides (all of them) that board it in; avgCopies is
-        # the mean across the guides that do.
-        per_matchup = collections.defaultdict(lambda: collections.defaultdict(list))
-        matchup_names = set()
-        for g in loaded:
-            matrix = board_in_by_matchup(g["plan"])
-            for matchup, cards in matrix.items():
-                matchup_names.add(matchup)
-                for card, counts in cards.items():
-                    per_matchup[matchup][card].extend(counts)
+        # fraction of guides (all of them) that move the card that way;
+        # avgCopies is the mean across the guides that do. IN and OUT use
+        # the same aggregation with different directions.
+        def build_matrix(direction):
+            per_matchup = collections.defaultdict(lambda: collections.defaultdict(list))
+            matchup_names = set()
+            for g in loaded:
+                matrix = board_by_matchup(g["plan"], direction)
+                for matchup, cards in matrix.items():
+                    matchup_names.add(matchup)
+                    for card, counts in cards.items():
+                        per_matchup[matchup][card].extend(counts)
 
-        board_in = {}
-        for matchup in sorted(matchup_names):
-            card_entries = []
-            for card, counts in per_matchup[matchup].items():
-                appearing = len(counts)
-                card_entries.append({
-                    "name": card,
-                    "inclusion": round(appearing / n, 4),
-                    "avgCopies": round(sum(counts) / appearing, 4) if appearing else 0.0,
-                })
-            card_entries.sort(key=lambda x: (-x["inclusion"], -x["avgCopies"], x["name"]))
-            if card_entries:
-                board_in[matchup] = card_entries
+            result = {}
+            for matchup in sorted(matchup_names):
+                card_entries = []
+                for card, counts in per_matchup[matchup].items():
+                    appearing = len(counts)
+                    card_entries.append({
+                        "name": card,
+                        "inclusion": round(appearing / n, 4),
+                        "avgCopies": round(sum(counts) / appearing, 4) if appearing else 0.0,
+                    })
+                card_entries.sort(key=lambda x: (-x["inclusion"], -x["avgCopies"], x["name"]))
+                if card_entries:
+                    result[matchup] = card_entries
+            return result
+
+        board_in = build_matrix("in")
+        board_out = build_matrix("out")
 
         # --- name: most common archetype string in the bucket ---
         name_counts = collections.Counter(
@@ -260,13 +278,14 @@ def build_index(manifest, guides_dir):
             "guideCount": n,
             "cardFrequency": freq,
             "boardInMatrix": board_in,
+            "boardOutMatrix": board_out,
             "tags": sorted(tag_set),
             "guides": guides_out,
         })
 
     archetypes.sort(key=lambda a: (a["format"], -a["guideCount"], a["key"]))
     return {
-        "version": 2,
+        "version": 3,
         "lastUpdated": datetime.date.today().isoformat(),
         "archetypes": archetypes,
     }
