@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastUpdated": "2026-09-26",
+  "lastUpdated": "2026-09-27",
   "guides": [
     {
       "file": "mono-red-burn-modern.json",
@@ -53,6 +53,18 @@
       "verified": false,
       "createdAt": "2026-09-26",
       "lastEditedAt": "2026-09-26"
+    },
+    {
+      "file": "mono-blue-terror-20260927-155356-2641.json",
+      "deckName": "Mono-Blue Terror",
+      "format": "Pauper",
+      "archetype": "Mono-Blue Terror",
+      "archetypeKey": "mono-blue-terror",
+      "author": "rndfunction",
+      "tags": [],
+      "verified": false,
+      "createdAt": "2026-09-27",
+      "lastEditedAt": "2026-09-27"
     }
   ]
 }
