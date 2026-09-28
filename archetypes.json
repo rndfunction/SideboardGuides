@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "lastUpdated": "2026-09-27",
+  "lastUpdated": "2026-09-28",
   "archetypes": [
     {
       "key": "affinity",
@@ -229,7 +229,7 @@
       "key": "mono-green-elves",
       "name": "Mono-Green Elves",
       "format": "Pauper",
-      "guideCount": 2,
+      "guideCount": 3,
       "cardFrequency": [
         {
           "name": "Avenging Hunter",
@@ -239,17 +239,17 @@
         {
           "name": "Elvish Mystic",
           "inclusion": 1.0,
-          "avgCopies": 4.0
+          "avgCopies": 3.3333
         },
         {
           "name": "Forest",
           "inclusion": 1.0,
-          "avgCopies": 9.0
+          "avgCopies": 10.0
         },
         {
           "name": "Fyndhorn Elves",
           "inclusion": 1.0,
-          "avgCopies": 4.0
+          "avgCopies": 3.6667
         },
         {
           "name": "Generous Ent",
@@ -260,11 +260,6 @@
           "name": "Gingerbread Cabin",
           "inclusion": 1.0,
           "avgCopies": 1.0
-        },
-        {
-          "name": "Land Grant",
-          "inclusion": 1.0,
-          "avgCopies": 2.0
         },
         {
           "name": "Lead the Stampede",
@@ -294,7 +289,7 @@
         {
           "name": "Sagu Wildling",
           "inclusion": 1.0,
-          "avgCopies": 3.0
+          "avgCopies": 2.6667
         },
         {
           "name": "Timberwatch Elf",
@@ -302,55 +297,72 @@
           "avgCopies": 4.0
         },
         {
-          "name": "Wellwisher",
-          "inclusion": 1.0,
-          "avgCopies": 1.0
-        },
-        {
           "name": "Winding Way",
           "inclusion": 1.0,
           "avgCopies": 4.0
+        },
+        {
+          "name": "Land Grant",
+          "inclusion": 0.6667,
+          "avgCopies": 1.3333
+        },
+        {
+          "name": "Wellwisher",
+          "inclusion": 0.6667,
+          "avgCopies": 0.6667
+        },
+        {
+          "name": "Llanowar Elves",
+          "inclusion": 0.3333,
+          "avgCopies": 1.3333
         }
       ],
       "boardInMatrix": {
         "Cycle Storm": [
           {
             "name": "Faerie Macabre",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
+            "avgCopies": 3.0
+          }
+        ],
+        "Familiars": [
+          {
+            "name": "Faerie Macabre",
+            "inclusion": 0.3333,
             "avgCopies": 3.0
           }
         ],
         "Grixis Affinity": [
           {
             "name": "Spinewoods Paladin",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 2.0
           },
           {
             "name": "Wrap in Vigor",
-            "inclusion": 0.5,
-            "avgCopies": 1.0
+            "inclusion": 0.6667,
+            "avgCopies": 1.5
           }
         ],
         "Kuldotha Red": [
           {
             "name": "Gnaw to the Bone",
-            "inclusion": 0.5,
+            "inclusion": 0.3333,
             "avgCopies": 3.0
           },
           {
             "name": "Vitu-Ghazi Inspector",
-            "inclusion": 0.5,
+            "inclusion": 0.3333,
             "avgCopies": 3.0
           },
           {
             "name": "Spinewoods Paladin",
-            "inclusion": 0.5,
+            "inclusion": 0.3333,
             "avgCopies": 1.0
           },
           {
             "name": "Wrap in Vigor",
-            "inclusion": 0.5,
+            "inclusion": 0.3333,
             "avgCopies": 1.0
           }
         ],
@@ -362,25 +374,55 @@
           },
           {
             "name": "Vitu-Ghazi Inspector",
-            "inclusion": 1.0,
+            "inclusion": 0.6667,
             "avgCopies": 3.0
           },
           {
             "name": "Spinewoods Paladin",
-            "inclusion": 1.0,
+            "inclusion": 0.6667,
             "avgCopies": 2.0
+          },
+          {
+            "name": "Nylea's Disciple",
+            "inclusion": 0.3333,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Spidersilk Armor",
+            "inclusion": 0.3333,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Wrap in Vigor",
+            "inclusion": 0.3333,
+            "avgCopies": 2.0
+          },
+          {
+            "name": "Faerie Macabre",
+            "inclusion": 0.3333,
+            "avgCopies": 1.0
           }
         ],
         "Terror": [
           {
             "name": "Spinewoods Paladin",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 2.0
           },
           {
             "name": "Vitu-Ghazi Inspector",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 2.0
+          },
+          {
+            "name": "Faerie Macabre",
+            "inclusion": 0.3333,
+            "avgCopies": 3.0
+          },
+          {
+            "name": "Nylea's Disciple",
+            "inclusion": 0.3333,
+            "avgCopies": 1.0
           }
         ]
       },
@@ -388,36 +430,43 @@
         "Cycle Storm": [
           {
             "name": "Lead the Stampede",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 2.0
           },
           {
             "name": "Avenging Hunter",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 1.0
+          }
+        ],
+        "Familiars": [
+          {
+            "name": "Masked Vandal",
+            "inclusion": 0.3333,
+            "avgCopies": 3.0
           }
         ],
         "Grixis Affinity": [
           {
             "name": "Avenging Hunter",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 2.0
           },
           {
             "name": "Wellwisher",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 1.0
           }
         ],
         "Kuldotha Red": [
           {
             "name": "Avenging Hunter",
-            "inclusion": 0.5,
+            "inclusion": 0.3333,
             "avgCopies": 4.0
           },
           {
             "name": "Masked Vandal",
-            "inclusion": 0.5,
+            "inclusion": 0.3333,
             "avgCopies": 4.0
           }
         ],
@@ -436,7 +485,7 @@
         "Terror": [
           {
             "name": "Masked Vandal",
-            "inclusion": 0.5,
+            "inclusion": 0.6667,
             "avgCopies": 4.0
           }
         ]
@@ -448,14 +497,21 @@
           "author": "rndfunction",
           "verified": false,
           "lastEditedAt": "2026-09-26",
-          "overlapWithCore": 1.0
+          "overlapWithCore": 0.9048
         },
         {
           "file": "mono-green-elves-20260924-073043.json",
           "author": "anonymous",
           "verified": false,
           "lastEditedAt": "2026-09-24",
-          "overlapWithCore": 1.0
+          "overlapWithCore": 0.9048
+        },
+        {
+          "file": "mono-green-elves-20260928-043808-5aaf.json",
+          "author": "rndfunction",
+          "verified": false,
+          "lastEditedAt": "2026-09-28",
+          "overlapWithCore": 0.875
         }
       ]
     },

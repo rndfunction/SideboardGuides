@@ -1,0 +1,151 @@
+{
+  "createdAt": "2026-09-28T04:38:08.357Z",
+  "deck": {
+    "archetype": "Mono-Green Elves",
+    "format": "Pauper",
+    "name": "Mono-Green Elves",
+    "rawText": "4 Avenging Hunter\n2 Elvish Mystic\n12 Forest\n3 Fyndhorn Elves\n4 Llanowar Elves\n4 Generous Ent\n1 Gingerbread Cabin\n4 Lead the Stampede\n4 Masked Vandal\n4 Nyxborn Hydra\n4 Priest of Titania\n4 Quirion Ranger\n2 Sagu Wildling\n4 Timberwatch Elf\n4 Winding Way\n\n3 Faerie Macabre\n4 Scattershot Archer\n2 Wrap in Vigor\n1 Viridian Longbow\n2 Spidersilk Armor \n3 Nylea's Disciple"
+  },
+  "format": "mtg-sideboard-guide",
+  "generator": "Sideboard Guide Builder",
+  "matchups": [
+    "Mono-Red Burn",
+    "Grixis Affinity",
+    "Terror",
+    "Cycle Storm",
+    "Familiars"
+  ],
+  "plan": {
+    "Avenging Hunter@main": {
+      "Cycle Storm": {
+        "count": 1,
+        "dir": "out"
+      },
+      "Grixis Affinity": {
+        "count": 2,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Elvish Mystic@main": {},
+    "Faerie Macabre@side": {
+      "Cycle Storm": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Familiars": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 1,
+        "dir": "in"
+      },
+      "Terror": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Forest@main": {},
+    "Fyndhorn Elves@main": {},
+    "Generous Ent@main": {},
+    "Gingerbread Cabin@main": {},
+    "Gnaw to the Bone@side": {
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      }
+    },
+    "Land Grant@main": {},
+    "Lead the Stampede@main": {
+      "Cycle Storm": {
+        "count": 2,
+        "dir": "out"
+      }
+    },
+    "Llanowar Elves@main": {},
+    "Masked Vandal@main": {
+      "Familiars": {
+        "count": 3,
+        "dir": "out"
+      },
+      "Mono-Red Burn": {
+        "count": 4,
+        "dir": "out"
+      },
+      "Terror": {
+        "count": 4,
+        "dir": "out"
+      }
+    },
+    "Monstrous Emergence@side": {},
+    "Nylea's Disciple@side": {
+      "Mono-Red Burn": {
+        "count": 3,
+        "dir": "in"
+      },
+      "Terror": {
+        "count": 1,
+        "dir": "in"
+      }
+    },
+    "Nyxborn Hydra@main": {},
+    "Priest of Titania@main": {},
+    "Quirion Ranger@main": {},
+    "Sagu Wildling@main": {},
+    "Scattershot Archer@side": {},
+    "Spidersilk Armor@side": {
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Spinewoods Paladin@side": {
+      "Grixis Affinity": {
+        "count": 2,
+        "dir": "in"
+      },
+      "Terror": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Timberwatch Elf@main": {},
+    "Viridian Longbow@side": {},
+    "Vitu-Ghazi Inspector@side": {
+      "Terror": {
+        "count": 2,
+        "dir": "in"
+      }
+    },
+    "Wellwisher@main": {
+      "Grixis Affinity": {
+        "count": 1,
+        "dir": "out"
+      }
+    },
+    "Wellwisher@side": {},
+    "Winding Way@main": {},
+    "Wrap in Vigor@side": {
+      "Grixis Affinity": {
+        "count": 2,
+        "dir": "in"
+      },
+      "Mono-Red Burn": {
+        "count": 2,
+        "dir": "in"
+      }
+    }
+  },
+  "titleCard": {
+    "color": null,
+    "fontKey": null,
+    "intensity": null,
+    "symbol": null,
+    "texture": null
+  },
+  "version": 1
+}
